@@ -18,8 +18,8 @@ class mahjong:
     
     def generate_question(self):
         gene = generate.generate(self.is_tenpai, self.number_mahjong)
-        question, yaku = gene.generate_question()
-        #yaku = yakuCheck.check(question, tenpai)
-        #print(yaku)
+        question, agari = gene.generate_question()
+        yaku = yakuCheck.check(question, agari)
+        print(yaku)
         
 

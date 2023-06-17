@@ -1,24 +1,24 @@
 import copy
-yaku = []
 def check(piece_array, number_mahjong):
+    agari = []
     for i in range(9):
         if piece_array[i] != 4:
             piece_array[i] += 1
-            head(copy.deepcopy(piece_array), number_mahjong+1, [[i]])
+            head(copy.deepcopy(piece_array), number_mahjong+1, [[i]],agari)
             piece_array[i] -= 1
-    return yaku
+    return agari
 
-def head(piece_array, number_mahjong, yaku_array):
+def head(piece_array, number_mahjong, agari_array,agari):
     for i in range(9):
         if piece_array[i] >= 2:
             piece_array[i] -= 2
-            set(piece_array, number_mahjong-2, yaku_array + [[i, i]])
+            set(piece_array, number_mahjong-2, agari_array + [[i, i]],agari)
             piece_array[i] += 2
 
 
-def set(piece_array, number_mahjong, yaku_array):
+def set(piece_array, number_mahjong, agari_array,agari):
     if number_mahjong == 0:
-        yaku.append(yaku_array)
+        agari.append(agari_array)
     else:
         i = 0
         while piece_array[i] == 0:
@@ -30,7 +30,7 @@ def set(piece_array, number_mahjong, yaku_array):
             piece_array[i] -= 1
             piece_array[i+1] -= 1
             piece_array[i+2] -= 1
-            set(piece_array, number_mahjong-3, yaku_array+[[i,i+1,i+2]])
+            set(piece_array, number_mahjong-3, agari_array+[[i,i+1,i+2]],agari)
             piece_array[i] += 1
             piece_array[i+1] += 1
             piece_array[i+2] += 1
@@ -39,7 +39,7 @@ def set(piece_array, number_mahjong, yaku_array):
         #暗刻
         if piece_array[i] >= 3:
             piece_array[i] -= 3
-            set(piece_array, number_mahjong-3,yaku_array+[[i,i,i]])
+            set(piece_array, number_mahjong-3,agari_array+[[i,i,i]],agari)
             piece_array[i] += 3
             is_set = True
 
