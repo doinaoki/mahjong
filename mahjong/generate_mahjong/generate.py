@@ -11,11 +11,11 @@ class generate:
         while True:
             question = self.generate_piece()
             print(question)
-            tenpai = tenpaiCheck.check(question, self.number_mahjong)
-            if sum(tenpai) > 0:
-                print(tenpai)
+            yaku = tenpaiCheck.check(question, self.number_mahjong)
+            if len(yaku) > 0 or not self.is_tenpai:
+                print(yaku)
                 break
-        return question,tenpai
+        return question,yaku
                 
 
     def generate_piece(self):

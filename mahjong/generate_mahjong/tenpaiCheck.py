@@ -1,30 +1,24 @@
 import copy
-
+yaku = []
 def check(piece_array, number_mahjong):
-    tenpai = [False for _ in range(9)]
-    #聴牌確認
     for i in range(9):
         if piece_array[i] != 4:
             piece_array[i] += 1
-            # 雀頭決定 
-            if head(copy.deepcopy(piece_array), number_mahjong+1):
-                tenpai[i] = True
+            head(copy.deepcopy(piece_array), number_mahjong+1, [[i]])
             piece_array[i] -= 1
-    return tenpai
+    return yaku
 
-def head(piece_array, number_mahjong):
-    piece_array = piece_array
+def head(piece_array, number_mahjong, yaku_array):
     for i in range(9):
         if piece_array[i] >= 2:
             piece_array[i] -= 2
-            if set(piece_array, number_mahjong-2):
-                return True
+            set(piece_array, number_mahjong-2, yaku_array + [[i, i]])
             piece_array[i] += 2
 
 
-def set(piece_array, number_mahjong):
+def set(piece_array, number_mahjong, yaku_array):
     if number_mahjong == 0:
-        return True
+        yaku.append(yaku_array)
     else:
         i = 0
         while piece_array[i] == 0:
@@ -36,8 +30,7 @@ def set(piece_array, number_mahjong):
             piece_array[i] -= 1
             piece_array[i+1] -= 1
             piece_array[i+2] -= 1
-            if set(piece_array, number_mahjong-3):
-                return True
+            set(piece_array, number_mahjong-3, yaku_array+[[i,i+1,i+2]])
             piece_array[i] += 1
             piece_array[i+1] += 1
             piece_array[i+2] += 1
@@ -46,12 +39,9 @@ def set(piece_array, number_mahjong):
         #暗刻
         if piece_array[i] >= 3:
             piece_array[i] -= 3
-            if set(piece_array, number_mahjong-3):
-                return True
-
+            set(piece_array, number_mahjong-3,yaku_array+[[i,i,i]])
             piece_array[i] += 3
             is_set = True
 
         if not is_set:
             return False
-
