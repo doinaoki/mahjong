@@ -10,7 +10,7 @@ class generate:
     def generate_question(self):
         while True:
             question = self.generate_piece()
-            print(question)
+            #print(question)
             agari = tenpaiCheck.check(question, self.number_mahjong)
             if len(agari) > 0 or not self.is_tenpai:
                 print(agari)

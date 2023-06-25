@@ -1,6 +1,11 @@
 
 
 def check(question, agari):
+    if sum(question) <= 12:
+        yakus = []
+        for i in agari:
+            yakus.append([i[0][0], 0, []])
+        return yakus
     #[[上がり牌, 面子, 待ち, 順子数, 暗刻数]]
     sets_info = []
     for i in agari:
@@ -77,6 +82,9 @@ def yaku(sets_info):
             han += 1
         if len(a) - len(set(a)) == 2:
             yaku_array.append("二盃口")
+            han += 2
+        if [0,1,2] in set_info[1] and [3,4,5] in set_info[1] and [6,7,8] in set_info[1]:
+            yaku_array.append("一気通貫")
             han += 2
         
         yakus.append([set_info[0], han, yaku_array]) 

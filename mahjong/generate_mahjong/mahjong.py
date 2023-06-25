@@ -15,11 +15,13 @@ class mahjong:
         except ValueError as e:
             print("ERROR generate_mahjong.mahjong.mahjong")
             print(e)
-    
+
+    #question = [1の個数, 2の個数, ..., 9の個数]
+    #yaku = [[待ち, 飜, 役],[]]
     def generate_question(self):
         gene = generate.generate(self.is_tenpai, self.number_mahjong)
         question, agari = gene.generate_question()
         yaku = yakuCheck.check(question, agari)
-        print(yaku)
+        return question, yaku
         
 
