@@ -9,7 +9,7 @@ def btn_clicked():
     print("Button Clicked")
 
 if __name__ == "__main__":
-    fh.home()
+    fh.start()
     '''
     mh = gmm.mahjong()
     question, yaku = mh.generate_question()
