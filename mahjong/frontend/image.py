@@ -11,3 +11,9 @@ def image():
     images["button2"] = button2
     button3 = tk.PhotoImage(file = f"design\\button3.png")
     images["button3"] = button3
+    piece7 = tk.PhotoImage(file = f"design\\7piece.png")
+    images["piece7"] = piece7
+    piece10 = tk.PhotoImage(file = f"design\\10_piece.png")
+    images["piece10"] = piece10
+    piece13 = tk.PhotoImage(file = f"design\\13_piece.png")
+    images["piece13"] = piece13
