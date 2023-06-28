@@ -17,3 +17,13 @@ def image():
     images["piece10"] = piece10
     piece13 = tk.PhotoImage(file = f"design\\13_piece.png")
     images["piece13"] = piece13
+
+    images["pin1"] = tk.PhotoImage(file = f"design\\1pin.png")
+    images["pin2"] = tk.PhotoImage(file = f"design\\2pin.png")
+    images["pin3"] = tk.PhotoImage(file = f"design\\3pin.png")
+    images["pin4"] = tk.PhotoImage(file = f"design\\4pin.png")
+    images["pin5"] = tk.PhotoImage(file = f"design\\5pin.png")
+    images["pin6"] = tk.PhotoImage(file = f"design\\6pin.png")
+    images["pin7"] = tk.PhotoImage(file = f"design\\7pin.png")
+    images["pin8"] = tk.PhotoImage(file = f"design\\8pin.png")
+    images["pin9"] = tk.PhotoImage(file = f"design\\9pin.png")

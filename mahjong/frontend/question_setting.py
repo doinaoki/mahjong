@@ -1,11 +1,14 @@
 import tkinter as tk
 from . import image
 import generate_mahjong.mahjong as gmm
+from . import question
 
-def btn3_clicked(canvas, root, radio_value):
+def btn3_clicked(radio_value):
     print(radio_value.get())
-    print("a")
 
+def btn2_clicked(canvas, root, radio_value):
+    canvas.place_forget()
+    question.question(canvas, root, radio_value)
 
 def question_setting(canvas, root):
     new_canvas = tk.Canvas(
@@ -25,7 +28,7 @@ def question_setting(canvas, root):
         image = piece7,
         variable = radio_value,
         value = 7,
-        command = lambda:btn3_clicked(new_canvas,root,radio_value),
+        command = lambda:btn3_clicked(radio_value),
         indicatoron = False
     )
     p7.place(
@@ -39,7 +42,7 @@ def question_setting(canvas, root):
         image = piece10,
         variable = radio_value,
         value = 10,
-        command = lambda:btn3_clicked(new_canvas,root,radio_value),
+        command = lambda:btn3_clicked(radio_value),
         indicatoron = False
     )
     p10.place(
@@ -53,11 +56,25 @@ def question_setting(canvas, root):
         image = piece13,
         variable = radio_value,
         value = 13,
-        command = lambda:btn3_clicked(new_canvas,root,radio_value),
+        command = lambda:btn3_clicked(radio_value),
         indicatoron = False
     )
     p13.place(
         x = 560, y = 200,
         width = 120,
         height = 40)
+    
+    button2 = image.images["button2"]
+    b2 = tk.Button(
+        image = button2,
+        borderwidth = 0,
+        highlightthickness = 0,
+        command = lambda:btn2_clicked(new_canvas, root, radio_value.get()),
+        relief = "flat")
+    b2.place(
+        x = 385, y = 326,
+        width = 202,
+        height = 35)
+    
+
 

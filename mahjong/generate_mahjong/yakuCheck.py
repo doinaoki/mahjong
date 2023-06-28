@@ -21,7 +21,7 @@ def wait_tile(win_tile, sets):
     #カンチャン,シャンポン,単騎,両面
     wait_string = ["両面", "単騎", "カンチャン", "ペンチャン", "シャンポン"]
     wait_array = [False,False,False,False,False]
-    #print(sets)
+    print(win_tile)
     for set in sets:
         if len(set) == 2 and win_tile in set:
             wait_array[1] = True
@@ -29,9 +29,9 @@ def wait_tile(win_tile, sets):
             wait_array[4] = True
         elif win_tile in set and set[1] == win_tile:
             wait_array[2] = True
-        elif win_tile in set and (win_tile == 7 and set[0] == 7):
+        elif win_tile in set and (win_tile == 6 and set[0] == 7):
             wait_array[3] = True
-        elif win_tile in set and (win_tile == 3 and set[2] == 3):
+        elif win_tile in set and (win_tile == 2 and set[2] == 3):
             wait_array[3] = True
         elif win_tile in set:
             wait_array[0] = True

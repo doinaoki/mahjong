@@ -11,9 +11,10 @@ def btn_clicked():
 if __name__ == "__main__":
     fh.start()
     '''
-    mh = gmm.mahjong()
+    mh = gmm.mahjong(1,13)
     question, yaku = mh.generate_question()
     print(question, yaku)
     question, yaku = mh.generate_question()
     print(question, yaku)
     '''
+    

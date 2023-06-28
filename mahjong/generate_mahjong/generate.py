@@ -13,7 +13,7 @@ class generate:
             #print(question)
             agari = tenpaiCheck.check(question, self.number_mahjong)
             if len(agari) > 0 or not self.is_tenpai:
-                print(agari)
+                #print(agari)
                 break
         return question,agari
                 

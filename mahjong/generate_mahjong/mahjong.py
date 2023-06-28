@@ -4,10 +4,10 @@ from . import yakuCheck
 import sys
 
 class mahjong:
-    def __init__(self):
+    def __init__(self, is_tenpai, number_mahjong):
         try:
-            self.is_tenpai = bool(int(input("tenpai?")))
-            self.number_mahjong = int(input("麻雀牌の数は?"))
+            self.is_tenpai = is_tenpai
+            self.number_mahjong = number_mahjong
             if self.number_mahjong not in [7,10,13]:
                 logging.error("generate_mahjong.mahjong.mahjong 麻雀牌の数がただしくありません")
                 sys.exit()
