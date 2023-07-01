@@ -9,7 +9,10 @@ def check_answer(wait_piece_answer, yaku):
     for i in yaku:
         answer_piece.append(i[0]+1)
     answer_piece = sorted(list(set(answer_piece)))
-    wait_piece_answer = sorted([int(i) for i in wait_piece_answer.split(",")])
+    if wait_piece_answer == "":
+        wait_piece_answer = []
+    else:
+        wait_piece_answer = sorted([int(i) for i in wait_piece_answer.split(",")])
     if answer_piece == wait_piece_answer:
         print("正解")
         return True
@@ -32,14 +35,16 @@ def show_piece(question, canvas):
     return
 
 def backb_clicked(canvas, root):
+    canvas.place_forget()
+    question_setting.question_setting(canvas, root)
     print("back")
 
-def nextb_clicked(canvas, root):
+def nextb_clicked(canvas, root, this_question):
     canvas.place_forget()
-    question.question(canvas, root, 13, True)
+    this_question.question0(canvas, root)
     print("next!")
 
-def result (canvas, root, wait_piece_answer, question, yaku):
+def result (canvas, root, wait_piece_answer, question, yaku, this_question):
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",
@@ -71,7 +76,7 @@ def result (canvas, root, wait_piece_answer, question, yaku):
         image = nextquestion,
         borderwidth = 0,
         highlightthickness = 0,
-        command = lambda:nextb_clicked(new_canvas, root),
+        command = lambda:nextb_clicked(new_canvas, root, this_question),
         relief = "flat")
     nextb.place(
         x = 770, y = 550,

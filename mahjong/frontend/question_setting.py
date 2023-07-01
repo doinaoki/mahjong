@@ -8,7 +8,8 @@ def btn3_clicked(radio_value):
 
 def btn2_clicked(canvas, root, radio_value, check_value):
     canvas.place_forget()
-    question.question(canvas, root, radio_value, check_value)
+    q = question.question()
+    q.question(canvas, root, radio_value, check_value, q)
 
 def cb1_clicked(c):
     print(f"value = {c.get()} ckeck_button_clicked")
