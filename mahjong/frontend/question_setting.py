@@ -2,6 +2,7 @@ import tkinter as tk
 from . import image
 import generate_mahjong.mahjong as gmm
 from . import question
+from . import select_question
 
 def btn3_clicked(radio_value):
     print(radio_value.get())
@@ -13,6 +14,11 @@ def btn2_clicked(canvas, root, radio_value, check_value):
 
 def cb1_clicked(c):
     print(f"value = {c.get()} ckeck_button_clicked")
+
+def backb_clicked(canvas, root):
+    canvas.place_forget()
+    select_question.select_question(canvas, root)
+    print("back")
 
 def question_setting(canvas, root):
     new_canvas = tk.Canvas(
@@ -92,5 +98,17 @@ def question_setting(canvas, root):
         relief = "flat")
     b2.place(
         x = 385, y = 426,
+        width = 202,
+        height = 35)
+    
+    backpage = image.images["backpage"]
+    backb = tk.Button(
+        image = backpage,
+        borderwidth = 0,
+        highlightthickness = 0,
+        command = lambda:backb_clicked(new_canvas, root),
+        relief = "flat")
+    backb.place(
+        x = 5, y = 550,
         width = 202,
         height = 35)

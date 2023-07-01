@@ -2,6 +2,7 @@ import tkinter as tk
 from . import image
 import generate_mahjong.mahjong as gmm
 from . import question_setting
+from . import home
 
 def btn2_clicked(canvas, root):
     canvas.place_forget()
@@ -10,6 +11,11 @@ def btn2_clicked(canvas, root):
 
 def btn3_clicked(canvas, root):
     print("btn3 clicked")
+
+def backb_clicked(canvas, root):
+    canvas.place_forget()
+    home.home(root)
+    print("back")
 
 
 def select_question(canvas, root):
@@ -47,5 +53,17 @@ def select_question(canvas, root):
         relief = "flat")
     b3.place(
         x = 385, y = 400,
+        width = 202,
+        height = 35)
+    
+    backpage = image.images["backpage"]
+    backb = tk.Button(
+        image = backpage,
+        borderwidth = 0,
+        highlightthickness = 0,
+        command = lambda:backb_clicked(new_canvas, root),
+        relief = "flat")
+    backb.place(
+        x = 5, y = 550,
         width = 202,
         height = 35)
