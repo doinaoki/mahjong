@@ -44,6 +44,14 @@ def nextb_clicked(canvas, root, this_question):
     this_question.question0(canvas, root)
     print("next!")
 
+def add_miss_question(question, yaku):
+    with open("../miss_question.txt", 'a' ) as ms:
+        ms.write(f"{question}:")
+        ms.write(f"{yaku}:")
+        ms.write(f"N")
+        ms.write("\n")
+
+
 def result (canvas, root, wait_piece_answer, question, yaku, this_question):
     new_canvas = tk.Canvas(
         root,
@@ -64,6 +72,7 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_question):
             font=("MSゴシック", "20", "bold")
         )
     else:
+        add_miss_question(question, yaku)
         label = tk.Label(
             root,
             text = "不正解",
