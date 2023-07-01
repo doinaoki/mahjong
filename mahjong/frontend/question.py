@@ -3,22 +3,27 @@ from . import image
 import generate_mahjong.mahjong as gmm
 from . import result
 
-
 def check_answer(wait_piece_answer, yaku):
-    answer_piece = []
-    for i in yaku:
-        answer_piece.append(i[0]+1)
-    answer_piece = sorted(list(set(answer_piece)))
-    wait_piece_answer = sorted([int(i) for i in wait_piece_answer.split(",")])
-    if answer_piece == wait_piece_answer:
-        print("正解!")
+    print(wait_piece_answer)
+    if wait_piece_answer != []:
+        answer_piece = []
+        for i in yaku:
+            answer_piece.append(i[0]+1)
+        answer_piece = sorted(list(set(answer_piece)))
+        wait_piece_answer = sorted([int(i) for i in wait_piece_answer.split(",")])
+        if answer_piece == wait_piece_answer:
+            print("正解!")
+        else:
+            print("不正解")
     else:
-        print("不正解")
+        print("入力しろ")
     
 def btn1_clicked(canvas, root, wait_piece_answer, question, yaku):
-    #print(wait_piece_answer)
-    canvas.place_forget()
-    result.result(canvas, root, wait_piece_answer, question, yaku)
+    if wait_piece_answer != "":
+        canvas.place_forget()
+        result.result(canvas, root, wait_piece_answer, question, yaku)
+    else:
+        print("入力しろ")
     
 
 def show_piece(question, canvas):
@@ -37,7 +42,6 @@ def show_piece(question, canvas):
 
 
 def question(canvas, root, piece, check_value):
-    print(piece)
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",

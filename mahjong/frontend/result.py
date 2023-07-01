@@ -1,7 +1,8 @@
 import tkinter as tk
 from . import image
 import generate_mahjong.mahjong as gmm
-from . import result
+from . import question
+from . import question_setting
 
 def check_answer(wait_piece_answer, yaku):
     answer_piece = []
@@ -28,11 +29,17 @@ def show_piece(question, canvas):
                 64+59*t, 160.0,
                 image=pin)
             t += 1
-   
     return
-    
 
-def result(canvas, root, wait_piece_answer, question, yaku):
+def backb_clicked(canvas, root):
+    print("back")
+
+def nextb_clicked(canvas, root):
+    canvas.place_forget()
+    question.question(canvas, root, 13, True)
+    print("next!")
+
+def result (canvas, root, wait_piece_answer, question, yaku):
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",
@@ -44,3 +51,41 @@ def result(canvas, root, wait_piece_answer, question, yaku):
     new_canvas.place(x = 0, y = 0)
     show_piece(question, new_canvas)
     correct = check_answer(wait_piece_answer, yaku)
+
+    if correct:
+        label = tk.Label(
+            root,
+            text = "正解",
+            font=("MSゴシック", "20", "bold")
+        )
+    else:
+        label = tk.Label(
+            root,
+            text = "不正解",
+            font=("MSゴシック", "20", "bold")
+        )
+    label.place(x=450, y=350)
+
+    nextquestion = image.images["nextquestion"]
+    nextb = tk.Button(
+        image = nextquestion,
+        borderwidth = 0,
+        highlightthickness = 0,
+        command = lambda:nextb_clicked(new_canvas, root),
+        relief = "flat")
+    nextb.place(
+        x = 770, y = 550,
+        width = 202,
+        height = 35)
+    
+    backpage = image.images["backpage"]
+    backb = tk.Button(
+        image = backpage,
+        borderwidth = 0,
+        highlightthickness = 0,
+        command = lambda:backb_clicked(new_canvas, root),
+        relief = "flat")
+    backb.place(
+        x = 5, y = 550,
+        width = 202,
+        height = 35)

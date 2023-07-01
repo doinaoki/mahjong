@@ -29,3 +29,6 @@ def image():
     images["pin9"] = tk.PhotoImage(file = f"design\\9pin.png")
 
     images["tenpai"] = tk.PhotoImage(file = f"design\\tenpai.png")
+
+    images["backpage"] = tk.PhotoImage(file = f"design\\backpage.png")
+    images["nextquestion"] = tk.PhotoImage(file = f"design\\nextquestion.png")
