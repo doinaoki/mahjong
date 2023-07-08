@@ -20,10 +20,16 @@ class question:
         else:
             print("入力しろ")
     '''
+
+    #field
+    #question
+    #yaku
+    #setting
              
-    def btn1_clicked(self, canvas, root, wait_piece_answer, question, yaku):
+    def confilm_answer_clicked(self, canvas, root, wait_piece_answer):
+        canvas.delete("all")
         canvas.place_forget()
-        result.result(canvas, root, wait_piece_answer, question, yaku, self.this_question)
+        result.result(canvas, root, wait_piece_answer, self.question, self.yaku, self.setting)
         
 
     def show_piece(sef, question, canvas):
@@ -40,15 +46,21 @@ class question:
     
         return
 
+    def generate_question(self, setting):
+        g = gmm.mahjong(setting.is_tenpai, setting.number_piece)
+        question, yaku = g.generate_question()
+        self.question = question
+        self.yaku = yaku
+        self.setting = setting
 
-    def question(self, canvas, root, piece, check_value, this_question):
-        self.this_question = this_question
-        self.piece = piece
-        self.check_value = check_value
-        self.question0(canvas, root)
+    def register_question(self, question, yaku, setting):
+        self.question = question
+        self.yaku = yaku
+        self.setting = setting
 
+    def show_question(self, canvas, root):
+        print(self.question, self.yaku)
 
-    def question0(self, canvas, root):
         new_canvas = tk.Canvas(
             root,
             bg = "#000000",
@@ -58,10 +70,7 @@ class question:
             highlightthickness = 0,
             relief = "ridge")
         new_canvas.place(x = 0, y = 0)
-        g = gmm.mahjong(self.check_value, self.piece)
-        question, yaku = g.generate_question()
-        print(question, yaku)
-        self.show_piece(question, new_canvas)
+        self.show_piece(self.question, new_canvas)
 
         wait_piece_answer = tk.StringVar()
         entry = tk.Entry(
@@ -79,7 +88,7 @@ class question:
             image = button3,
             borderwidth = 0,
             highlightthickness = 0,
-            command = lambda:self.btn1_clicked(new_canvas, root, wait_piece_answer.get(), question, yaku),
+            command = lambda:self.confilm_answer_clicked(new_canvas, root, wait_piece_answer.get()),
             relief = "flat")
         b1.place(
             x = 385, y = 426,

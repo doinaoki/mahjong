@@ -6,6 +6,7 @@ from . import select_question
 def btn_clicked(canvas,root):
 
     print("Button Clicked")
+    canvas.delete("all")
     canvas.place_forget()
     select_question.select_question(canvas, root)
 

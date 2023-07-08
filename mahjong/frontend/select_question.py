@@ -5,6 +5,7 @@ from . import question_setting
 from . import home
 
 def btn2_clicked(canvas, root):
+    canvas.delete("all")
     canvas.place_forget()
     print("btn2 clicked")
     q = question_setting.question_setting()
@@ -14,6 +15,7 @@ def btn3_clicked(canvas, root):
     print("btn3 clicked")
 
 def backb_clicked(canvas, root):
+    canvas.delete("all")
     canvas.place_forget()
     home.home(root)
     print("back")

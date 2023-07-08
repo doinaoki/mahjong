@@ -7,3 +7,9 @@ class setting_information:
     def __init__(self, number_piece, is_tenpai):
         self.number_piece = number_piece
         self.is_tenpai = is_tenpai
+
+    def back_question():
+        print("question back")
+    
+    def again_question():
+        print("question again")

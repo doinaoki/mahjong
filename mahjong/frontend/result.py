@@ -34,15 +34,20 @@ def show_piece(question, canvas):
             t += 1
     return
 
-def backb_clicked(canvas, root):
+def backb_clicked(canvas, root, this_setting, correct):
+    canvas.delete("all")
     canvas.place_forget()
+    this_setting.back_question(root, canvas, this_setting, correct)
+    '''
     q = question_setting.question_setting()
     q.question_setting(canvas, root)
+    '''
     print("back")
 
-def nextb_clicked(canvas, root, this_question):
+def nextb_clicked(canvas, root, this_setting, correct):
+    canvas.delete("all")
     canvas.place_forget()
-    this_question.question0(canvas, root)
+    this_setting.again_question(root, canvas, this_setting, correct)
     print("next!")
 
 def add_miss_question(question, yaku):
@@ -53,7 +58,7 @@ def add_miss_question(question, yaku):
         ms.write("\n")
 
 
-def result (canvas, root, wait_piece_answer, question, yaku, this_question):
+def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",
@@ -86,7 +91,7 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_question):
         image = nextquestion,
         borderwidth = 0,
         highlightthickness = 0,
-        command = lambda:nextb_clicked(new_canvas, root, this_question),
+        command = lambda:nextb_clicked(new_canvas, root, this_setting, correct),
         relief = "flat")
     nextb.place(
         x = 770, y = 550,
@@ -98,7 +103,7 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_question):
         image = backpage,
         borderwidth = 0,
         highlightthickness = 0,
-        command = lambda:backb_clicked(new_canvas, root),
+        command = lambda:backb_clicked(new_canvas, root, this_setting, correct),
         relief = "flat")
     backb.place(
         x = 5, y = 550,

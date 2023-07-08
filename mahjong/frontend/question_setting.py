@@ -7,29 +7,25 @@ from . import setting_information
 
 class question_setting():
 
-
     def piece_clicked(self, radio_value):
         print(radio_value.get())
 
     def confilm_setting_clicked(self, canvas, root, radio_value, check_value):
-        setting = setting_information.setting_information(radio_value, check_value)
+        canvas.delete("all")
         canvas.place_forget()
+        setting = self.normal_setting_information(radio_value, check_value)
         q = question.question()
-        q.question(canvas, root, radio_value, check_value, q)
+        q.generate_question(setting)
+        q.show_question(canvas, root)
 
     def tenpai_clicked(self, c):
         print(f"value = {c.get()} ckeck_button_clicked")
 
     def backb_clicked(self, canvas, root):
+        canvas.delete("all")
         canvas.place_forget()
         select_question.select_question(canvas, root)
         print("back")
-
-    def back_question():
-        print("question back")
-    
-    def again_question():
-        print("question again")
 
     def question_setting(self, canvas, root):
         new_canvas = tk.Canvas(
@@ -123,3 +119,21 @@ class question_setting():
             x = 5, y = 550,
             width = 202,
             height = 35)
+        
+
+    class normal_setting_information(setting_information.setting_information):
+        def __init__(self, number_piece, is_tenpai):
+            super().__init__(number_piece, is_tenpai)
+        
+        #Override
+        def back_question(self, root, canvas, setting, correct):
+            q = question_setting()
+            q.question_setting(canvas, root)
+            print("back")
+        
+        #Override
+        def again_question(self, root, canvas, setting, correct):
+            q = question.question()
+            q.generate_question(setting)
+            q.show_question(canvas, root)
+            print("again")
