@@ -9,12 +9,12 @@ class question_setting():
     def piece_clicked(self, radio_value):
         print(radio_value.get())
 
-    def btn2_clicked(self, canvas, root, radio_value, check_value):
+    def confilm_setting_clicked(self, canvas, root, radio_value, check_value):
         canvas.place_forget()
         q = question.question()
         q.question(canvas, root, radio_value, check_value, q)
 
-    def cb1_clicked(self, c):
+    def tenpai_clicked(self, c):
         print(f"value = {c.get()} ckeck_button_clicked")
 
     def backb_clicked(self, canvas, root):
@@ -78,14 +78,14 @@ class question_setting():
         
         
         check_value1 = tk.BooleanVar(value = True)
-        cb1 = tk.Checkbutton(
+        tenpai = tk.Checkbutton(
             root,
             image = image.images["tenpai"],
-            command = lambda:self.cb1_clicked(check_value1),
+            command = lambda:self.tenpai_clicked(check_value1),
             variable = check_value1,
             indicatoron = False
         )
-        cb1.place(
+        tenpai.place(
             x = 315, y = 326,
             width = 155,
             height = 35)
@@ -96,7 +96,7 @@ class question_setting():
             image = button2,
             borderwidth = 0,
             highlightthickness = 0,
-            command = lambda:self.btn2_clicked(new_canvas, root, radio_value.get(), check_value1.get()),
+            command = lambda:self.confilm_setting_clicked(new_canvas, root, radio_value.get(), check_value1.get()),
             relief = "flat")
         b2.place(
             x = 385, y = 426,
