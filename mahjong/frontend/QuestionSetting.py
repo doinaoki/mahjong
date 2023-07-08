@@ -1,11 +1,11 @@
 import tkinter as tk
-from . import image
+from . import Image
 import generate_mahjong.mahjong as gmm
-from . import question
-from . import select_question
-from . import setting_information
+from . import Question
+from . import SelectQuestion
+from . import SettingInformation
 
-class question_setting():
+class QuestionSetting():
 
     def piece_clicked(self, radio_value):
         print(radio_value.get())
@@ -14,7 +14,7 @@ class question_setting():
         canvas.delete("all")
         canvas.place_forget()
         setting = self.normal_setting_information(radio_value, check_value)
-        q = question.question()
+        q = Question.question()
         q.generate_question(setting)
         q.show_question(canvas, root)
 
@@ -24,7 +24,7 @@ class question_setting():
     def backb_clicked(self, canvas, root):
         canvas.delete("all")
         canvas.place_forget()
-        select_question.select_question(canvas, root)
+        SelectQuestion.select_question(canvas, root)
         print("back")
 
     def question_setting(self, canvas, root):
@@ -39,7 +39,7 @@ class question_setting():
         new_canvas.place(x = 0, y = 0)
 
         radio_value = tk.IntVar(value = 7)
-        piece7 = image.images["piece7"]
+        piece7 = Image.images["piece7"]
         p7 = tk.Radiobutton(
             root,
             image = piece7,
@@ -53,7 +53,7 @@ class question_setting():
             width = 120,
             height = 40)
         
-        piece10 = image.images["piece10"]
+        piece10 = Image.images["piece10"]
         p10 = tk.Radiobutton(
             root,
             image = piece10,
@@ -67,7 +67,7 @@ class question_setting():
             width = 120,
             height = 40)
         
-        piece13 = image.images["piece13"]
+        piece13 = Image.images["piece13"]
         p13 = tk.Radiobutton(
             root,
             image = piece13,
@@ -85,7 +85,7 @@ class question_setting():
         check_value1 = tk.BooleanVar(value = True)
         tenpai = tk.Checkbutton(
             root,
-            image = image.images["tenpai"],
+            image = Image.images["tenpai"],
             command = lambda:self.tenpai_clicked(check_value1),
             variable = check_value1,
             indicatoron = False
@@ -96,7 +96,7 @@ class question_setting():
             height = 35)
 
 
-        button2 = image.images["button2"]
+        button2 = Image.images["button2"]
         b2 = tk.Button(
             image = button2,
             borderwidth = 0,
@@ -108,7 +108,7 @@ class question_setting():
             width = 202,
             height = 35)
         
-        backpage = image.images["backpage"]
+        backpage = Image.images["backpage"]
         backb = tk.Button(
             image = backpage,
             borderwidth = 0,
@@ -121,19 +121,19 @@ class question_setting():
             height = 35)
         
 
-    class normal_setting_information(setting_information.setting_information):
+    class normal_setting_information(SettingInformation.setting_information):
         def __init__(self, number_piece, is_tenpai):
             super().__init__(number_piece, is_tenpai)
         
         #Override
         def back_question(self, root, canvas, setting, correct):
-            q = question_setting()
+            q = QuestionSetting()
             q.question_setting(canvas, root)
             print("back")
         
         #Override
         def again_question(self, root, canvas, setting, correct):
-            q = question.question()
+            q = Question.question()
             q.generate_question(setting)
             q.show_question(canvas, root)
             print("again")

@@ -1,14 +1,14 @@
 import tkinter as tk
-from . import image
+from . import Image
 import generate_mahjong.mahjong as gmm
-from . import question_setting
-from . import home
+from . import QuestionSetting
+from . import Home
 
 def btn2_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
     print("btn2 clicked")
-    q = question_setting.question_setting()
+    q = QuestionSetting.QuestionSetting()
     q.question_setting(canvas, root)
 
 def btn3_clicked(canvas, root):
@@ -17,7 +17,7 @@ def btn3_clicked(canvas, root):
 def backb_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
-    home.home(root)
+    Home.home(root)
     print("back")
 
 
@@ -33,9 +33,9 @@ def select_question(canvas, root):
     new_canvas.place(x = 0, y = 0)
     background = new_canvas.create_image(
         506.5, 313.0,
-        image=image.images["background"])
+        image=Image.images["background"])
     
-    button2 = image.images["button2"]
+    button2 = Image.images["button2"]
     b2 = tk.Button(
         image = button2,
         borderwidth = 0,
@@ -47,7 +47,7 @@ def select_question(canvas, root):
         width = 202,
         height = 35)
     
-    button3 = image.images["button3"]
+    button3 = Image.images["button3"]
     b3 = tk.Button(
         image = button3,
         borderwidth = 0,
@@ -59,7 +59,7 @@ def select_question(canvas, root):
         width = 202,
         height = 35)
     
-    backpage = image.images["backpage"]
+    backpage = Image.images["backpage"]
     backb = tk.Button(
         image = backpage,
         borderwidth = 0,

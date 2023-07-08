@@ -1,7 +1,7 @@
 import generate_mahjong.mahjong as gmm
 import os
 import sys
-import frontend.home as fh
+import frontend.Home as fh
 sys.path.append('../')
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 

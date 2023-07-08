@@ -1,7 +1,7 @@
 import tkinter as tk
-from . import image
+from . import Image
 import generate_mahjong.mahjong as gmm
-from . import result
+from . import Result
 
 class question:
     '''
@@ -29,7 +29,7 @@ class question:
     def confilm_answer_clicked(self, canvas, root, wait_piece_answer):
         canvas.delete("all")
         canvas.place_forget()
-        result.result(canvas, root, wait_piece_answer, self.question, self.yaku, self.setting)
+        Result.result(canvas, root, wait_piece_answer, self.question, self.yaku, self.setting)
         
 
     def show_piece(sef, question, canvas):
@@ -38,7 +38,7 @@ class question:
         for i in range(len(question)):
             p = s[i]
             for k in range(question[i]):
-                pin = image.images[p]
+                pin = Image.images[p]
                 canvas.create_image(
                     64+59*t, 160.0,
                     image=pin)
@@ -83,7 +83,7 @@ class question:
             width = 100,
             height = 35)
 
-        button3 = image.images["button3"]
+        button3 = Image.images["button3"]
         b1 = tk.Button(
             image = button3,
             borderwidth = 0,

@@ -1,8 +1,8 @@
 import tkinter as tk
-from . import image
+from . import Image
 import generate_mahjong.mahjong as gmm
-from . import question
-from . import question_setting
+from . import Question
+from . import QuestionSetting
 
 def check_answer(wait_piece_answer, yaku):
     answer_piece = []
@@ -27,7 +27,7 @@ def show_piece(question, canvas):
     for i in range(len(question)):
         p = s[i]
         for k in range(question[i]):
-            pin = image.images[p]
+            pin = Image.images[p]
             canvas.create_image(
                 64+59*t, 160.0,
                 image=pin)
@@ -38,10 +38,6 @@ def backb_clicked(canvas, root, this_setting, correct):
     canvas.delete("all")
     canvas.place_forget()
     this_setting.back_question(root, canvas, this_setting, correct)
-    '''
-    q = question_setting.question_setting()
-    q.question_setting(canvas, root)
-    '''
     print("back")
 
 def nextb_clicked(canvas, root, this_setting, correct):
@@ -86,7 +82,7 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         )
     label.place(x=450, y=350)
 
-    nextquestion = image.images["nextquestion"]
+    nextquestion = Image.images["nextquestion"]
     nextb = tk.Button(
         image = nextquestion,
         borderwidth = 0,
@@ -98,7 +94,7 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         width = 202,
         height = 35)
     
-    backpage = image.images["backpage"]
+    backpage = Image.images["backpage"]
     backb = tk.Button(
         image = backpage,
         borderwidth = 0,
