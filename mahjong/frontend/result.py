@@ -36,7 +36,8 @@ def show_piece(question, canvas):
 
 def backb_clicked(canvas, root):
     canvas.place_forget()
-    question_setting.question_setting(canvas, root)
+    q = question_setting.question_setting()
+    q.question_setting(canvas, root)
     print("back")
 
 def nextb_clicked(canvas, root, this_question):

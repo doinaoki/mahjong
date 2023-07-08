@@ -7,7 +7,8 @@ from . import home
 def btn2_clicked(canvas, root):
     canvas.place_forget()
     print("btn2 clicked")
-    question_setting.question_setting(canvas, root)
+    q = question_setting.question_setting()
+    q.question_setting(canvas, root)
 
 def btn3_clicked(canvas, root):
     print("btn3 clicked")
