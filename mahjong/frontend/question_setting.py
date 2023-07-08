@@ -3,13 +3,16 @@ from . import image
 import generate_mahjong.mahjong as gmm
 from . import question
 from . import select_question
+from . import setting_information
 
 class question_setting():
+
 
     def piece_clicked(self, radio_value):
         print(radio_value.get())
 
     def confilm_setting_clicked(self, canvas, root, radio_value, check_value):
+        setting = setting_information.setting_information(radio_value, check_value)
         canvas.place_forget()
         q = question.question()
         q.question(canvas, root, radio_value, check_value, q)
@@ -21,6 +24,12 @@ class question_setting():
         canvas.place_forget()
         select_question.select_question(canvas, root)
         print("back")
+
+    def back_question():
+        print("question back")
+    
+    def again_question():
+        print("question again")
 
     def question_setting(self, canvas, root):
         new_canvas = tk.Canvas(
