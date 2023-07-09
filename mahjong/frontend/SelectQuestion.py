@@ -3,6 +3,7 @@ from . import Image
 import generate_mahjong.mahjong as gmm
 from . import QuestionSetting
 from . import Home
+from . import ListMissQuestion
 
 def btn2_clicked(canvas, root):
     canvas.delete("all")
@@ -12,6 +13,10 @@ def btn2_clicked(canvas, root):
     q.question_setting(canvas, root)
 
 def btn3_clicked(canvas, root):
+    canvas.delete("all")
+    canvas.place_forget()
+    l = ListMissQuestion.ListMissQuestion()
+    l.show_list(canvas, root)
     print("btn3 clicked")
 
 def backb_clicked(canvas, root):
