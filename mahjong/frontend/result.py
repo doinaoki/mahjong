@@ -50,7 +50,6 @@ def add_miss_question(question, yaku):
     with open("../miss_question.txt", 'a' ) as ms:
         ms.write(f"{question}:")
         ms.write(f"{yaku}:")
-        ms.write(f"N")
         ms.write("\n")
 
 
