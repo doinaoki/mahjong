@@ -46,11 +46,12 @@ def select_question(canvas, root):
         borderwidth = 0,
         highlightthickness = 0,
         command = lambda:btn2_clicked(new_canvas, root),
-        relief = "flat")
+        relief = "flat",
+        background="#666571")
     b2.place(
-        x = 385, y = 326,
-        width = 202,
-        height = 35)
+        x = 352, y = 326,
+        width = 295,
+        height = 50)
     
     button3 = Image.images["button3"]
     b3 = tk.Button(
@@ -58,11 +59,12 @@ def select_question(canvas, root):
         borderwidth = 0,
         highlightthickness = 0,
         command = lambda:btn3_clicked(new_canvas, root),
-        relief = "flat")
+        relief = "flat",
+        background="#666571")
     b3.place(
-        x = 385, y = 400,
-        width = 202,
-        height = 35)
+        x = 349, y = 420,
+        width = 295,
+        height = 50)
     
     backpage = Image.images["backpage"]
     backb = tk.Button(
@@ -70,8 +72,9 @@ def select_question(canvas, root):
         borderwidth = 0,
         highlightthickness = 0,
         command = lambda:backb_clicked(new_canvas, root),
-        relief = "flat")
+        relief = "flat",
+        background="#666571")
     backb.place(
-        x = 5, y = 550,
-        width = 202,
-        height = 35)
+        x = 346, y = 514,
+        width = 295,
+        height = 50)

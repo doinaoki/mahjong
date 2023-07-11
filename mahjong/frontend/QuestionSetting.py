@@ -36,7 +36,12 @@ class QuestionSetting():
             bd = 0,
             highlightthickness = 0,
             relief = "ridge")
+        new_canvas.create_image(
+            506.5, 313.0,
+            image=Image.images["settingbackground"])
         new_canvas.place(x = 0, y = 0)
+
+
 
         radio_value = tk.IntVar(value = 7)
         piece7 = Image.images["piece7"]
@@ -49,9 +54,9 @@ class QuestionSetting():
             indicatoron = False
         )
         p7.place(
-            x = 320, y = 200,
-            width = 120,
-            height = 40)
+            x = 447, y = 190,
+            width = 140,
+            height = 46)
         
         piece10 = Image.images["piece10"]
         p10 = tk.Radiobutton(
@@ -63,9 +68,9 @@ class QuestionSetting():
             indicatoron = False
         )
         p10.place(
-            x = 440, y = 200,
-            width = 120,
-            height = 40)
+            x = 585, y = 190,
+            width = 137,
+            height = 46)
         
         piece13 = Image.images["piece13"]
         p13 = tk.Radiobutton(
@@ -77,38 +82,53 @@ class QuestionSetting():
             indicatoron = False
         )
         p13.place(
-            x = 560, y = 200,
-            width = 120,
-            height = 40)
+            x = 713, y = 190,
+            width = 124,
+            height = 46)
         
         
-        check_value1 = tk.BooleanVar(value = True)
-        tenpai = tk.Checkbutton(
+
+        tenpai_value = tk.BooleanVar(value = True)
+        Yes_tenpai = tk.Radiobutton(
             root,
-            image = Image.images["tenpai"],
-            command = lambda:self.tenpai_clicked(check_value1),
-            variable = check_value1,
+            image = Image.images["Ytenpai"],
+            command = lambda:self.tenpai_clicked(tenpai_value),
+            value = True,
+            variable = tenpai_value,
             indicatoron = False
         )
-        tenpai.place(
-            x = 315, y = 326,
-            width = 155,
-            height = 35)
+        Yes_tenpai.place(
+            x = 447, y = 296,
+            width = 145,
+            height = 48)
+        
+        No_tenpai = tk.Radiobutton(
+            root,
+            image = Image.images["Ntenpai"],
+            command = lambda:self.tenpai_clicked(tenpai_value),
+            value = False,
+            variable = tenpai_value,
+            indicatoron = False
+        )
+        No_tenpai.place(
+            x = 592, y = 296,
+            width = 145,
+            height = 48)
 
 
-        button2 = Image.images["button2"]
-        b2 = tk.Button(
-            image = button2,
+
+        start_button = tk.Button(
+            image = Image.images["startbutton"],
             borderwidth = 0,
             highlightthickness = 0,
-            command = lambda:self.confilm_setting_clicked(new_canvas, root, radio_value.get(), check_value1.get()),
+            command = lambda:self.confilm_setting_clicked(new_canvas, root, radio_value.get(), tenpai_value.get()),
             relief = "flat")
-        b2.place(
-            x = 385, y = 426,
-            width = 202,
-            height = 35)
+        start_button.place(
+            x = 400, y = 540,
+            width = 204,
+            height = 49)
         
-        backpage = Image.images["backpage"]
+        backpage = Image.images["backbutton"]
         backb = tk.Button(
             image = backpage,
             borderwidth = 0,
@@ -116,9 +136,9 @@ class QuestionSetting():
             command = lambda:self.backb_clicked(new_canvas, root),
             relief = "flat")
         backb.place(
-            x = 5, y = 550,
-            width = 202,
-            height = 35)
+            x = 5, y = 577,
+            width = 146,
+            height = 47)
         
 
     class normal_setting_information(SettingInformation.setting_information):

@@ -44,9 +44,11 @@ def home(root):
         borderwidth = 0,
         highlightthickness = 0,
         command = lambda:btn_clicked(canvas, root),
-        relief = "flat")
+        relief = "flat",)
     b0.place(
-        x = 385, y = 326,
-        width = 202,
-        height = 35)
+        x = 352, y = 326,
+        width = 295,
+        height = 50)
+    b0["bg"] = "#666571"
+    b0["border"] = "0"
 

@@ -40,7 +40,7 @@ class question:
             for k in range(question[i]):
                 pin = Image.images[p]
                 canvas.create_image(
-                    64+59*t, 160.0,
+                    64+52*t, 160.0,
                     image=pin)
                 t += 1
     

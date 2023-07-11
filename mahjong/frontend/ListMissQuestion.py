@@ -44,7 +44,7 @@ class ListMissQuestion:
     def show_page(self):
         self.page_buttons = []
         miss_list_size = len(self.miss_list)
-        miss_pages = miss_list_size // 5 + 1
+        miss_pages = (miss_list_size - 1) // self.show_page_piece + 1
         for i in range(miss_pages):
             button = tk.Button(
                 self.root,
@@ -62,16 +62,16 @@ class ListMissQuestion:
     def show_piece(self):
         self.now_button = []
         s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
-        for c in range((self.now_page_number-1)*5, min(len(self.miss_list), (self.now_page_number)*5)):
+        for c in range((self.now_page_number-1)*self.show_page_piece, min(len(self.miss_list), (self.now_page_number)*self.show_page_piece)):
             question = self.miss_list[c][0]
-            cc = c % 5
+            cc = c % self.show_page_piece
             t = 1
             for i in range(len(question)):
                 p = s[i]
                 for k in range(question[i]):
                     pin = Image.images[p]
                     self.canvas.create_image(
-                        40+59*t, 100*cc + 60,
+                        40+53*t, 100*cc + 60,
                         image=pin)
                     t += 1
             b = tk.Button(
@@ -91,6 +91,7 @@ class ListMissQuestion:
         print("show")
 
     def show_list(self, canvas, root):
+        self.show_page_piece = 4
         with open("../miss_question.txt", 'r' ) as ms:
             miss_questions = ms.read()
         
