@@ -48,6 +48,23 @@ def count_chow(sets):
             count += 1
     return count
 
+def arrangement(yakus):
+    new_yakus = []
+    for i in range(9):
+        maxhan = 0
+        y = []
+        for yaku in yakus:
+            agari_piece = yaku[0]
+            han = yaku[1]
+            if agari_piece != i:
+                continue
+            if maxhan < han:
+                y = yaku
+                maxhan = han
+        if maxhan != 0:
+            new_yakus.append(y)
+    return new_yakus
+
 def yaku(sets_info):
     yakus = []
     for set_info in sets_info:
@@ -73,20 +90,24 @@ def yaku(sets_info):
                 yaku_array.append("タンヤオ")
                 han += 1
         a = []
+        print(set_info)
         for i in set_info[1]:
             if i[0] != i[1]:
                 a.append(i[0])
+            else:
+                a.append((i[0]+1)*10)
             
         if len(a) - len(set(a)) == 1:
             yaku_array.append("一盃口")
             han += 1
         if len(a) - len(set(a)) == 2:
             yaku_array.append("二盃口")
-            han += 2
+            han += 3
         if [0,1,2] in set_info[1] and [3,4,5] in set_info[1] and [6,7,8] in set_info[1]:
             yaku_array.append("一気通貫")
             han += 2
         
         yakus.append([set_info[0], han, yaku_array]) 
+        yakus = arrangement(yakus)
     return yakus
             
