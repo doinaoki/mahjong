@@ -157,3 +157,52 @@ class QuestionSetting():
             q.generate_question(setting)
             q.show_question(canvas, root)
             print("again")
+        
+        '''
+        def add_miss_question(self, question, yaku):
+            with open("../miss_question.txt", 'a' ) as ms:
+                ms.write(f"{question}:")
+                ms.write(f"{yaku}:")
+                ms.write("\n")
+        
+        #Override
+        def result(self, root, canvas, setting, correct):
+            if correct:
+                label = tk.Label(
+                    root,
+                    text = "正解",
+                    font=("MSゴシック", "20", "bold")
+                )
+            else:
+                self.add_miss_question(question, yaku)
+                label = tk.Label(
+                    root,
+                    text = "不正解",
+                    font=("MSゴシック", "20", "bold")
+                )
+            label.place(x=450, y=350)
+
+            nextquestion = Image.images["nextquestion"]
+            nextb = tk.Button(
+                image = nextquestion,
+                borderwidth = 0,
+                highlightthickness = 0,
+                command = lambda:nextb_clicked(new_canvas, root, this_setting, correct),
+                relief = "flat")
+            nextb.place(
+                x = 770, y = 550,
+                width = 202,
+                height = 35)
+            
+            backpage = Image.images["backpage"]
+            backb = tk.Button(
+                image = backpage,
+                borderwidth = 0,
+                highlightthickness = 0,
+                command = lambda:backb_clicked(new_canvas, root, this_setting, correct),
+                relief = "flat")
+            backb.place(
+                x = 5, y = 550,
+                width = 202,
+                height = 35)
+        '''

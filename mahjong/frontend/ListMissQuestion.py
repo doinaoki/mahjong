@@ -1,9 +1,10 @@
 import tkinter as tk
 from . import Image
 import generate_mahjong.mahjong as gmm
-from . import QuestionSetting
+from . import SelectQuestion
 from . import Home
 import ast
+from . import MissResult
 
 class ListMissQuestion:
 
@@ -38,7 +39,29 @@ class ListMissQuestion:
         self.canvas.delete("all")
         for i in self.now_button:
             i.destroy()
+        miss_background = self.canvas.create_image(
+            506.5, 313.0,
+            image=Image.images["missbackground"])
         self.show_piece()
+
+    def back_button_clicked(self):
+        self.canvas.delete("all")
+        self.canvas.place_forget()
+        for i in self.now_button:
+            i.destroy()
+        SelectQuestion.select_question(self.canvas, self.root)
+        print("back")
+
+    def answer_button_clicked(self, event):
+        self.canvas.delete("all")
+        self.canvas.place_forget()
+        question = self.miss_list[event.widget.cget("text")][0]
+        yaku = self.miss_list[event.widget.cget("text")][1]
+        for i in self.now_button:
+            i.destroy()
+        for i in self.page_buttons:
+            i.destroy()
+        MissResult.miss_result(self.canvas, self.root, question, yaku)
 
 
     def show_page(self):
@@ -53,9 +76,9 @@ class ListMissQuestion:
             )
             button.bind("<ButtonPress>", self.page_button_clicked)
             button.place(
-                x = i*60 + 60, y = 530,
-                width = 50,
-                height = 50)
+                x = i*60 + 100, y = 500,
+                width = 45,
+                height = 45)
             self.page_buttons.append(button)
         return
 
@@ -71,21 +94,36 @@ class ListMissQuestion:
                 for k in range(question[i]):
                     pin = Image.images[p]
                     self.canvas.create_image(
-                        40+53*t, 100*cc + 60,
+                        40+50*t, 120*cc + 70,
                         image=pin)
                     t += 1
+
             b = tk.Button(
                 self.root,
                 text = c,
-                image = Image.images["button3"],
+                image = Image.images["deletebutton"],
                 borderwidth = 0,
                 highlightthickness = 0,
                 relief = "flat")
             b.place(
-                x = 800, y = 100*cc + 60,
-                width = 202,
-                height = 35)
+                x = 777, y = 120*cc + 70,
+                width = 184,
+                height = 38)
             b.bind("<ButtonPress>", self.delete_button_clicked)
+            self.now_button.append(b)
+
+            b = tk.Button(
+                self.root,
+                text = c,
+                image = Image.images["answerbutton"],
+                borderwidth = 0,
+                highlightthickness = 0,
+                relief = "flat")
+            b.place(
+                x = 777, y = 120*cc + 27,
+                width = 184,
+                height = 38)
+            b.bind("<ButtonPress>", self.answer_button_clicked)
             self.now_button.append(b)
 
         print("show")
@@ -114,9 +152,42 @@ class ListMissQuestion:
             highlightthickness = 0,
             relief = "ridge")
         new_canvas.place(x = 0, y = 0)
+        miss_background = new_canvas.create_image(
+            506.5, 313.0,
+            image=Image.images["missbackground"])
 
         self.now_page_number = 1
         self.canvas = new_canvas
         self.root = root
         self.show_page()
         self.show_piece()
+
+        backpage = Image.images["missbackpage"]
+        backb = tk.Button(
+            image = backpage,
+            borderwidth = 0,
+            highlightthickness = 0,
+            command = lambda:self.back_button_clicked(),
+            relief = "flat",
+            background="#F2F0F0")
+        backb.place(
+            x = 11, y = 558,
+            width = 170,
+            height = 43)
+
+
+    '''      
+    class miss_setting_information(SettingInformation.setting_information):
+        def __init__(self, number_piece, is_tenpai):
+            super().__init__(number_piece, is_tenpai)
+        
+        #Override
+        def back_question(self, root, canvas, setting, correct):
+            q = ListMissQuestion()
+            q.show_list(canvas, root)
+            print("back")
+        
+        #Override
+        def again_question(self, root, canvas, setting, correct):
+            print("again")
+    '''

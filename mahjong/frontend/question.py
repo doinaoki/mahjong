@@ -40,7 +40,7 @@ class question:
             for k in range(question[i]):
                 pin = Image.images[p]
                 canvas.create_image(
-                    64+52*t, 160.0,
+                    89+50*t, 150.0,
                     image=pin)
                 t += 1
     
@@ -70,6 +70,9 @@ class question:
             highlightthickness = 0,
             relief = "ridge")
         new_canvas.place(x = 0, y = 0)
+        new_canvas.create_image(
+            506.5, 313.0,
+            image=Image.images["questionbackground"])
         self.show_piece(self.question, new_canvas)
 
         wait_piece_answer = tk.StringVar()

@@ -29,7 +29,7 @@ def show_piece(question, canvas):
         for k in range(question[i]):
             pin = Image.images[p]
             canvas.create_image(
-                64+52*t, 160.0,
+                89+50*t, 150.0,
                 image=pin)
             t += 1
     return
@@ -52,6 +52,22 @@ def add_miss_question(question, yaku):
         ms.write(f"{yaku}:")
         ms.write("\n")
 
+def show_result_pieces(root, canvas, yaku):
+    s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
+    places = [[210, 264],[568,264],[210, 358],[568,358],[210,452],[568,452],[210,546],[568,546]]
+    for i in range(len(yaku)):
+        agari = yaku[i]
+        win_piece = agari[0]
+        yaku_list = agari[2]
+        place = places[i]
+
+        pin = Image.images[s[win_piece]]
+        canvas.create_image(
+            place[0], place[1],
+            image=pin)
+
+
+
 
 def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
     new_canvas = tk.Canvas(
@@ -63,23 +79,22 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         highlightthickness = 0,
         relief = "ridge")
     new_canvas.place(x = 0, y = 0)
+    new_canvas.create_image(
+        506.5, 313.0,
+        image=Image.images["resultbackground"])
     show_piece(question, new_canvas)
+    show_result_pieces(root, new_canvas, yaku)
     correct = check_answer(wait_piece_answer, yaku)
 
     if correct:
-        label = tk.Label(
-            root,
-            text = "正解",
-            font=("MSゴシック", "20", "bold")
-        )
+        new_canvas.create_image(
+        720, 40,
+        image=Image.images["correct"])
     else:
         add_miss_question(question, yaku)
-        label = tk.Label(
-            root,
-            text = "不正解",
-            font=("MSゴシック", "20", "bold")
-        )
-    label.place(x=450, y=350)
+        new_canvas.create_image(
+        720, 40,
+        image=Image.images["uncorrect"])
 
     nextquestion = Image.images["nextquestion"]
     nextb = tk.Button(
@@ -89,9 +104,9 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         command = lambda:nextb_clicked(new_canvas, root, this_setting, correct),
         relief = "flat")
     nextb.place(
-        x = 770, y = 550,
-        width = 202,
-        height = 35)
+        x = 700, y = 550,
+        width = 295,
+        height = 50)
     
     backpage = Image.images["backpage"]
     backb = tk.Button(
@@ -102,5 +117,5 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         relief = "flat")
     backb.place(
         x = 5, y = 550,
-        width = 202,
-        height = 35)
+        width = 295,
+        height = 50)

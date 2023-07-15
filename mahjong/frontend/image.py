@@ -9,6 +9,13 @@ def image():
     images["button2"] = tk.PhotoImage(file = f"design\\button2.png")
     images["button3"] = tk.PhotoImage(file = f"design\\button3.png")
 
+    #miss_page
+    images["missbackground"] = tk.PhotoImage(file = f"design\\missbackground.png")
+    images["missbackpage"] = tk.PhotoImage(file = f"design\\missbackpage.png")
+    images["deletebutton"] = tk.PhotoImage(file = f"design\\deletebutton.png")
+    images["answerbutton"] = tk.PhotoImage(file = f"design\\answerbutton.png")
+
+
     #setting_page
 
     images["settingbackground"] = tk.PhotoImage(file = f"design\\setting_background.png")
@@ -38,6 +45,12 @@ def image():
     images["backbutton"] = tk.PhotoImage(file = f"design\\back_button.png")
 
     #question_page
+    images["questionbackground"] = tk.PhotoImage(file = f"design\\question_background.png")
+
+    #result_page
+    images["resultbackground"] = tk.PhotoImage(file = f"design\\result_background.png")
+    images["uncorrect"] = tk.PhotoImage(file = f"design\\不正解.png")
+    images["correct"] = tk.PhotoImage(file = f"design\\正解.png")
 
     images["backpage"] = tk.PhotoImage(file = f"design\\backpage.png")
     images["nextquestion"] = tk.PhotoImage(file = f"design\\nextquestion.png")
