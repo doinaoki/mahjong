@@ -5,7 +5,17 @@ def check(question, agari):
         yakus = []
         for i in agari:
             yakus.append([i[0][0], 0, []])
-        return yakus
+        new_yakus = []
+        for i in range(9):
+            y = []
+            for yaku in yakus:
+                agari_piece = yaku[0]
+                if agari_piece != i:
+                    continue
+                y = yaku
+            if y != []:
+                new_yakus.append(y)
+        return new_yakus
     #[[上がり牌, 面子, 待ち, 順子数, 暗刻数]]
     sets_info = []
     for i in agari:
@@ -86,7 +96,8 @@ def yaku(sets_info):
         for i in range(len(set_info[1])):
             if 0 in set_info[1][i] or 8 in set_info[1][i]:
                 break
-            if i == 3:
+            if i == len(set_info[1])-1:
+                print(set_info[1][i])
                 yaku_array.append("タンヤオ")
                 han += 1
         a = [0 for _ in range(9)]
