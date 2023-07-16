@@ -57,7 +57,7 @@ def add_miss_question(question, yaku):
         ms.write("\n")
 
 def add_puzzled_question(check_value, question, yaku):
-    if not check_value:
+    if not check_value.get():
         return
     with open("../puzzled_question.txt", 'a' ) as ms:
         ms.write(f"{question}:")
