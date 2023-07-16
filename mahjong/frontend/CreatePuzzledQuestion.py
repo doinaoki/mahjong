@@ -3,7 +3,7 @@ from . import Image
 import generate_mahjong.tenpaiCheck as gmt
 import generate_mahjong.yakuCheck as gmy
 import ast
-from . import ListMissQuestion
+from . import ListPuzzledQuestion
 
 class CreatePuzzledQuestion:
     def show_piece(self):
@@ -104,7 +104,7 @@ class CreatePuzzledQuestion:
         question = self.input_pieces
         agari = gmt.check(question, input_length)
         yakus = gmy.check(question, agari)
-        with open("../miss_question.txt", 'a' ) as ms:
+        with open("../puzzled_question.txt", 'a' ) as ms:
             ms.write(f"{question}:")
             ms.write(f"{yakus}:")
             ms.write("\n")
@@ -117,7 +117,7 @@ class CreatePuzzledQuestion:
         self.canvas.place_forget()
         for i in self.now_button:
             i.destroy()
-        lmq = ListMissQuestion.ListMissQuestion()
+        lmq = ListPuzzledQuestion.ListPuzzledQuestion()
         lmq.show_list(self.canvas, self.root)
         print("back")
 

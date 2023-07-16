@@ -8,11 +8,11 @@ def check(question, agari):
         new_yakus = []
         for i in range(9):
             y = []
-            for yaku in yakus:
-                agari_piece = yaku[0]
+            for ya in yakus:
+                agari_piece = ya[0]
                 if agari_piece != i:
                     continue
-                y = yaku
+                y = ya
             if y != []:
                 new_yakus.append(y)
         return new_yakus

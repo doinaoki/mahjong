@@ -8,6 +8,7 @@ def image():
     images["button1"] = tk.PhotoImage(file = f"design\\button1.png")
     images["button2"] = tk.PhotoImage(file = f"design\\button2.png")
     images["button3"] = tk.PhotoImage(file = f"design\\button3.png")
+    images["button4"] = tk.PhotoImage(file = f"design\\puzzledbutton.png")
 
     #miss_page
     images["missbackground"] = tk.PhotoImage(file = f"design\\missbackground.png")
@@ -48,6 +49,7 @@ def image():
     #question_page
     images["questionbackground"] = tk.PhotoImage(file = f"design\\question_background.png")
     images["decision"] = tk.PhotoImage(file = f"design\\決定.png")
+    images["puzzledbutton"] = tk.PhotoImage(file = f"design\\迷った.png")
 
     #result_page
     images["resultbackground"] = tk.PhotoImage(file = f"design\\result_background.png")

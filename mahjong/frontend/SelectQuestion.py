@@ -4,6 +4,7 @@ import generate_mahjong.mahjong as gmm
 from . import QuestionSetting
 from . import Home
 from . import ListMissQuestion
+from . import ListPuzzledQuestion
 
 def btn2_clicked(canvas, root):
     canvas.delete("all")
@@ -16,6 +17,13 @@ def btn3_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
     l = ListMissQuestion.ListMissQuestion()
+    l.show_list(canvas, root)
+    print("btn3 clicked")
+
+def btn4_clicked(canvas, root):
+    canvas.delete("all")
+    canvas.place_forget()
+    l = ListPuzzledQuestion.ListPuzzledQuestion()
     l.show_list(canvas, root)
     print("btn3 clicked")
 
@@ -62,7 +70,20 @@ def select_question(canvas, root):
         relief = "flat",
         background="#666571")
     b3.place(
-        x = 349, y = 420,
+        x = 349, y = 396,
+        width = 295,
+        height = 50)
+    
+    button4 = Image.images["button4"]
+    b4 = tk.Button(
+        image = button4,
+        borderwidth = 0,
+        highlightthickness = 0,
+        command = lambda:btn4_clicked(new_canvas, root),
+        relief = "flat",
+        background="#666571")
+    b4.place(
+        x = 349, y = 466,
         width = 295,
         height = 50)
     
@@ -75,6 +96,6 @@ def select_question(canvas, root):
         relief = "flat",
         background="#666571")
     backb.place(
-        x = 346, y = 514,
+        x = 346, y = 536,
         width = 295,
         height = 50)

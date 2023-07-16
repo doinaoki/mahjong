@@ -20,6 +20,8 @@ def check_answer(wait_piece_answer, yaku):
         print("不正解")
         return False
 
+def puzzled_button_clicked(check):
+    print(check)
 
 def show_piece(question, canvas):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
@@ -34,20 +36,30 @@ def show_piece(question, canvas):
             t += 1
     return
 
-def backb_clicked(canvas, root, this_setting, correct):
+def backb_clicked(canvas, root, this_setting, correct, check_value, question, yaku):
     canvas.delete("all")
     canvas.place_forget()
+    add_puzzled_question(check_value, question, yaku)
     this_setting.back_question(root, canvas, this_setting, correct)
     print("back")
 
-def nextb_clicked(canvas, root, this_setting, correct):
+def nextb_clicked(canvas, root, this_setting, correct, check_value, question, yaku):
     canvas.delete("all")
     canvas.place_forget()
+    add_puzzled_question(check_value, question, yaku)
     this_setting.again_question(root, canvas, this_setting, correct)
     print("next!")
 
 def add_miss_question(question, yaku):
     with open("../miss_question.txt", 'a' ) as ms:
+        ms.write(f"{question}:")
+        ms.write(f"{yaku}:")
+        ms.write("\n")
+
+def add_puzzled_question(check_value, question, yaku):
+    if not check_value:
+        return
+    with open("../puzzled_question.txt", 'a' ) as ms:
         ms.write(f"{question}:")
         ms.write(f"{yaku}:")
         ms.write("\n")
@@ -106,12 +118,26 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         720, 40,
         image=Image.images["uncorrect"])
 
+    check_value = tk.BooleanVar(value = False)
+    puzzledb = tk.Checkbutton(
+        image = Image.images["puzzledbutton"],
+        borderwidth = 0,
+        highlightthickness = 0,
+        variable = check_value,
+        command = lambda:puzzled_button_clicked(check_value.get()),
+        indicatoron = False)
+    puzzledb.place(
+        x = 420, y = 550,
+        width = 166,
+        height = 46)
+
+
     nextquestion = Image.images["nextquestion"]
     nextb = tk.Button(
         image = nextquestion,
         borderwidth = 0,
         highlightthickness = 0,
-        command = lambda:nextb_clicked(new_canvas, root, this_setting, correct),
+        command = lambda:nextb_clicked(new_canvas, root, this_setting, correct, check_value, question, yaku),
         relief = "flat")
     nextb.place(
         x = 700, y = 550,
@@ -123,9 +149,10 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         image = backpage,
         borderwidth = 0,
         highlightthickness = 0,
-        command = lambda:backb_clicked(new_canvas, root, this_setting, correct),
+        command = lambda:backb_clicked(new_canvas, root, this_setting, correct, check_value, question, yaku),
         relief = "flat")
     backb.place(
         x = 5, y = 550,
         width = 295,
         height = 50)
+    
