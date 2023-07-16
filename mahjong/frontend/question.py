@@ -75,25 +75,34 @@ class question:
             image=Image.images["questionbackground"])
         self.show_piece(self.question, new_canvas)
 
+        label = tk.Label(
+            root,
+            text = "入力",
+            font=("MSゴシック", "20", "bold"),
+            bg = "#F5F5F5"
+        )
+        label.place(x=270, y=250)
+
         wait_piece_answer = tk.StringVar()
         entry = tk.Entry(
             root,
             textvariable=wait_piece_answer,
-            width=100
+            width=300,
+            font=("MSゴシック", "30", "bold")
         )
         entry.place(
-            x = 200, y = 326,
-            width = 100,
-            height = 35)
+            x = 370, y = 250,
+            width = 300,
+            height = 50)
 
-        button3 = Image.images["button3"]
+        decision = Image.images["decision"]
         b1 = tk.Button(
-            image = button3,
+            image = decision,
             borderwidth = 0,
             highlightthickness = 0,
             command = lambda:self.confilm_answer_clicked(new_canvas, root, wait_piece_answer.get()),
             relief = "flat")
         b1.place(
-            x = 385, y = 426,
-            width = 202,
-            height = 35)
+            x = 420, y = 426,
+            width = 171,
+            height = 44)

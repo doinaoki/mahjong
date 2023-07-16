@@ -5,6 +5,7 @@ from . import SelectQuestion
 from . import Home
 import ast
 from . import MissResult
+from . import CreateMissQuestion
 
 class ListMissQuestion:
 
@@ -52,6 +53,7 @@ class ListMissQuestion:
         SelectQuestion.select_question(self.canvas, self.root)
         print("back")
 
+
     def answer_button_clicked(self, event):
         self.canvas.delete("all")
         self.canvas.place_forget()
@@ -63,6 +65,17 @@ class ListMissQuestion:
             i.destroy()
         MissResult.miss_result(self.canvas, self.root, question, yaku)
 
+    def create_button_clicked(self):
+        self.canvas.delete("all")
+        for i in self.now_button:
+            i.destroy()
+        for i in self.page_buttons:
+            i.destroy()
+        self.canvas.place_forget()
+        cmq = CreateMissQuestion.CreateMissQuestion()
+        cmq.create(self.canvas, self.root)
+        
+        
 
     def show_page(self):
         self.page_buttons = []
@@ -172,6 +185,19 @@ class ListMissQuestion:
             background="#F2F0F0")
         backb.place(
             x = 11, y = 558,
+            width = 170,
+            height = 43)
+        
+        backpage = Image.images["createbutton"]
+        backb = tk.Button(
+            image = backpage,
+            borderwidth = 0,
+            highlightthickness = 0,
+            command = lambda:self.create_button_clicked(),
+            relief = "flat",
+            background="#F2F0F0")
+        backb.place(
+            x = 800, y = 558,
             width = 170,
             height = 43)
 

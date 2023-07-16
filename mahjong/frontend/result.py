@@ -55,7 +55,7 @@ def add_miss_question(question, yaku):
 def show_result_pieces(root, canvas, yaku):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
     piece_places = [[210, 264],[568,264],[210, 358],[568,358],[210,452],[568,452],[210,546],[568,546]]
-    yaku_places = [[50,-30],[150,-30],[50,0],[150,0]]
+    yaku_places = [[50,-30],[180,-30],[50,0],[180,0]]
     for i in range(len(yaku)):
         agari = yaku[i]
         win_piece = agari[0]

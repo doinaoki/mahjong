@@ -43,9 +43,11 @@ def image():
 
     images["startbutton"] = tk.PhotoImage(file = f"design\\start_button.png")
     images["backbutton"] = tk.PhotoImage(file = f"design\\back_button.png")
+    images["createbutton"] = tk.PhotoImage(file = f"design\\作成.png")
 
     #question_page
     images["questionbackground"] = tk.PhotoImage(file = f"design\\question_background.png")
+    images["decision"] = tk.PhotoImage(file = f"design\\決定.png")
 
     #result_page
     images["resultbackground"] = tk.PhotoImage(file = f"design\\result_background.png")

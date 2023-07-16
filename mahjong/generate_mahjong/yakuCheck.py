@@ -89,18 +89,24 @@ def yaku(sets_info):
             if i == 3:
                 yaku_array.append("タンヤオ")
                 han += 1
-        a = []
-        print(set_info)
+        a = [0 for _ in range(9)]
+        iipeekoo = False
+        ryanpeekoo = False
         for i in set_info[1]:
             if i[0] != i[1]:
-                a.append(i[0])
-            else:
-                a.append((i[0]+1)*10)
+                a[i[0]] += 1
+        
+        for i in a:
+            if i >= 2 and iipeekoo:
+                ryanpeekoo = True
+                iipeekoo = False
+            elif i >= 2:
+                iipeekoo = True
             
-        if len(a) - len(set(a)) == 1:
+        if iipeekoo:
             yaku_array.append("一盃口")
             han += 1
-        if len(a) - len(set(a)) == 2:
+        if ryanpeekoo:
             yaku_array.append("二盃口")
             han += 3
         if [0,1,2] in set_info[1] and [3,4,5] in set_info[1] and [6,7,8] in set_info[1]:
