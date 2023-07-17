@@ -1,6 +1,7 @@
 import tkinter as tk
 from . import Image
 from . import ListPuzzledQuestion
+from . import DrawFigure
 
 def show_piece(question, canvas):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
@@ -39,13 +40,7 @@ def show_result_pieces(root, canvas, yaku):
         for k in range(len(yaku_list)):
             yaku_name = yaku_list[k]
             yaku_place = [place[0] + yaku_places[k][0], place[1] + yaku_places[k][1]]
-            label = tk.Label(
-                root,
-                text = yaku_name,
-                font=("MSゴシック", "20", "bold"),
-                bg = "#F5F5F5"
-            )
-            label.place(x=yaku_place[0], y=yaku_place[1])
+            label = DrawFigure.draw_label(root, yaku_name, ("MSゴシック", "20", "bold"), yaku_place[0], yaku_place[1])
 '''
 def show_result_pieces(root, canvas, yaku):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]

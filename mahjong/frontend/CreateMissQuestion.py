@@ -4,6 +4,7 @@ import generate_mahjong.tenpaiCheck as gmt
 import generate_mahjong.yakuCheck as gmy
 import ast
 from . import ListMissQuestion
+from . import DrawFigure
 
 class CreateMissQuestion:
     def show_piece(self):
@@ -51,14 +52,7 @@ class CreateMissQuestion:
                 x = 40+50*k, y = 150.0)
             b.bind("<ButtonPress>", self.create_piece_clicked)
             self.now_button.append(b)
-        label = tk.Label(
-            self.root,
-            text = "入力ボタン",
-            font=("MSゴシック", "20", "bold"),
-            bg = "#F5F5F5"
-        )
-        label.place(x=40, y=90)
-    
+        label = DrawFigure.draw_label(self.root, "入力ボタン", ("MSゴシック", "20", "bold"), 40, 90)
         return
     
     def delete_button_pieces(self):
@@ -77,14 +71,8 @@ class CreateMissQuestion:
                 x = 530+50*k, y = 150.0)
             b.bind("<ButtonPress>", self.delete_piece_clicked)
             self.now_button.append(b)
-        label = tk.Label(
-            self.root,
-            text = "削除ボタン",
-            font=("MSゴシック", "20", "bold"),
-            bg = "#F5F5F5"
-        )
-        label.place(x=530, y=90)
-    
+        
+        label = DrawFigure.draw_label(self.root, "削除ボタン", ("MSゴシック", "20", "bold"), 530, 90)
         return
 
     def create_button_clicked(self):

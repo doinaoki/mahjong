@@ -3,6 +3,7 @@ from . import Image
 import generate_mahjong.mahjong as gmm
 from . import Question
 from . import QuestionSetting
+from . import DrawFigure
 
 def check_answer(wait_piece_answer, yaku):
     answer_piece = []
@@ -81,13 +82,7 @@ def show_result_pieces(root, canvas, yaku):
         for k in range(len(yaku_list)):
             yaku_name = yaku_list[k]
             yaku_place = [place[0] + yaku_places[k][0], place[1] + yaku_places[k][1]]
-            label = tk.Label(
-                root,
-                text = yaku_name,
-                font=("MSゴシック", "20", "bold"),
-                bg = "#F5F5F5"
-            )
-            label.place(x=yaku_place[0], y=yaku_place[1])
+            label = DrawFigure.draw_label(root, yaku_name, ("MSゴシック", "20", "bold"), yaku_place[0], yaku_place[1])
 
 
 
