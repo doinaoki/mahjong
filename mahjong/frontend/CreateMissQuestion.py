@@ -5,7 +5,7 @@ import generate_mahjong.yakuCheck as gmy
 import ast
 from . import ListMissQuestion
 
-class CreatePuzzledQuestion:
+class CreateMissQuestion:
     def show_piece(self):
         self.canvas.delete("all")
         s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]

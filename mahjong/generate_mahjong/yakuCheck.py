@@ -106,7 +106,7 @@ def yaku(sets_info):
         for i in set_info[1]:
             if i[0] != i[1]:
                 a[i[0]] += 1
-        
+        print(a)
         for i in a:
             if i >= 2 and iipeekoo:
                 ryanpeekoo = True

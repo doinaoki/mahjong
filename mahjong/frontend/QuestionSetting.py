@@ -10,12 +10,12 @@ class QuestionSetting():
     def piece_clicked(self, radio_value):
         print(radio_value.get())
 
-    def confilm_setting_clicked(self, canvas, root, radio_value, check_value):
+    def confilm_setting_clicked(self, canvas, root, radio_value, check_value, difficulty):
         canvas.delete("all")
         canvas.place_forget()
-        setting = self.normal_setting_information(radio_value, check_value)
+        setting = self.normal_setting_information(radio_value, check_value, difficulty)
         q = Question.question()
-        q.generate_question(setting)
+        q.generate_question(setting, difficulty)
         q.show_question(canvas, root)
 
     def tenpai_clicked(self, c):
@@ -115,13 +115,52 @@ class QuestionSetting():
             width = 145,
             height = 48)
 
+        difficulty_value = tk.IntVar(value = 0)
+        normal = tk.Radiobutton(
+            root,
+            image = Image.images["normal"],
+            command = lambda:self.tenpai_clicked(difficulty_value),
+            value = 0,
+            variable = difficulty_value,
+            indicatoron = False
+        )
+        normal.place(
+            x = 447, y = 399,
+            width = 145,
+            height = 46)
+        
+        difficult = tk.Radiobutton(
+            root,
+            image = Image.images["difficult"],
+            command = lambda:self.tenpai_clicked(difficulty_value),
+            value = 1,
+            variable = difficulty_value,
+            indicatoron = False
+        )
+        difficult.place(
+            x = 585, y = 399,
+            width = 145,
+            height = 48)
+        
+        random = tk.Radiobutton(
+            root,
+            image = Image.images["random"],
+            command = lambda:self.tenpai_clicked(difficulty_value),
+            value = 2,
+            variable = difficulty_value,
+            indicatoron = False
+        )
+        random.place(
+            x = 713, y = 399,
+            width = 145,
+            height = 48)
 
 
         start_button = tk.Button(
             image = Image.images["startbutton"],
             borderwidth = 0,
             highlightthickness = 0,
-            command = lambda:self.confilm_setting_clicked(new_canvas, root, radio_value.get(), tenpai_value.get()),
+            command = lambda:self.confilm_setting_clicked(new_canvas, root, radio_value.get(), tenpai_value.get(), difficulty_value.get()),
             relief = "flat")
         start_button.place(
             x = 400, y = 540,
@@ -142,8 +181,8 @@ class QuestionSetting():
         
 
     class normal_setting_information(SettingInformation.setting_information):
-        def __init__(self, number_piece, is_tenpai):
-            super().__init__(number_piece, is_tenpai)
+        def __init__(self, number_piece, is_tenpai, difficulty):
+            super().__init__(number_piece, is_tenpai, difficulty)
         
         #Override
         def back_question(self, root, canvas, setting, correct):
@@ -154,7 +193,7 @@ class QuestionSetting():
         #Override
         def again_question(self, root, canvas, setting, correct):
             q = Question.question()
-            q.generate_question(setting)
+            q.generate_question(setting, self.difficulty)
             q.show_question(canvas, root)
             print("again")
         

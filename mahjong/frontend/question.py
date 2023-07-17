@@ -46,8 +46,8 @@ class question:
     
         return
 
-    def generate_question(self, setting):
-        g = gmm.mahjong(setting.is_tenpai, setting.number_piece)
+    def generate_question(self, setting, difficulty):
+        g = gmm.mahjong(setting.is_tenpai, setting.number_piece, difficulty)
         question, yaku = g.generate_question()
         self.question = question
         self.yaku = yaku

@@ -3,17 +3,38 @@ import math
 from . import tenpaiCheck
 
 class generate:
-    def __init__(self, tenpai, number_mahjong):
+    def __init__(self, tenpai, number_mahjong, difficulty):
         self.is_tenpai = tenpai
         self.number_mahjong = number_mahjong
+        self.difficulty = difficulty
 
     def generate_question(self):
         while True:
             question = self.generate_piece()
             #print(question)
             agari = tenpaiCheck.check(question, self.number_mahjong)
-            if len(agari) > 0 or not self.is_tenpai:
+            number_of_agari = 0
+            for k in range(9):
+                for i in agari:
+                    if i[0][0] == k:
+                        number_of_agari += 1
+                        break
+            print(f"{number_of_agari}面張")
+            if not self.is_tenpai:
                 break
+            elif self.difficulty == 0:
+                if number_of_agari <= 2 and number_of_agari > 0:
+                    break
+            elif self.difficulty == 1:
+                if number_of_agari > 2:
+                    break
+            elif self.difficulty == 2:
+                if number_of_agari > 0:
+                    break
+
+
+            #if number_of_agari > self.difficulty or not self.is_tenpai:
+                #break
         return question,agari
                 
 
