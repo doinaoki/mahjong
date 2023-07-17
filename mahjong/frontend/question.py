@@ -4,22 +4,6 @@ import generate_mahjong.mahjong as gmm
 from . import Result
 
 class question:
-    '''
-    def check_answer(self, wait_piece_answer, yaku):
-        print(wait_piece_answer)
-        if wait_piece_answer != []:
-            answer_piece = []
-            for i in yaku:
-                answer_piece.append(i[0]+1)
-            answer_piece = sorted(list(set(answer_piece)))
-            wait_piece_answer = sorted([int(i) for i in wait_piece_answer.split(",")])
-            if answer_piece == wait_piece_answer:
-                print("正解!")
-            else:
-                print("不正解")
-        else:
-            print("入力しろ")
-    '''
 
     #field
     #question
@@ -29,6 +13,8 @@ class question:
     def confilm_answer_clicked(self, canvas, root, wait_piece_answer):
         canvas.delete("all")
         canvas.place_forget()
+        for i in self.widgits:
+            i.destroy()
         Result.result(canvas, root, wait_piece_answer, self.question, self.yaku, self.setting)
         
 
@@ -60,7 +46,7 @@ class question:
 
     def show_question(self, canvas, root):
         print(self.question, self.yaku)
-
+        self.widgits = []
         new_canvas = tk.Canvas(
             root,
             bg = "#000000",
@@ -106,3 +92,4 @@ class question:
             x = 420, y = 426,
             width = 171,
             height = 44)
+        self.widgits.append(b1)

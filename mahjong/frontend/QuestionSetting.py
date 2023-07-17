@@ -13,6 +13,9 @@ class QuestionSetting():
     def confilm_setting_clicked(self, canvas, root, radio_value, check_value, difficulty):
         canvas.delete("all")
         canvas.place_forget()
+        for i in self.widgits:
+            i.destroy()
+        self.widgits = []
         setting = self.normal_setting_information(radio_value, check_value, difficulty)
         q = Question.question()
         q.generate_question(setting, difficulty)
@@ -24,10 +27,14 @@ class QuestionSetting():
     def backb_clicked(self, canvas, root):
         canvas.delete("all")
         canvas.place_forget()
+        for i in self.widgits:
+            i.destroy()
+        self.widgits = []
         SelectQuestion.select_question(canvas, root)
         print("back")
 
     def question_setting(self, canvas, root):
+        self.widgits = []
         new_canvas = tk.Canvas(
             root,
             bg = "#ffffff",
@@ -85,6 +92,9 @@ class QuestionSetting():
             x = 713, y = 190,
             width = 124,
             height = 46)
+        self.widgits.append(p7)
+        self.widgits.append(p10)
+        self.widgits.append(p13)
         
         
 
@@ -114,6 +124,9 @@ class QuestionSetting():
             x = 592, y = 296,
             width = 145,
             height = 48)
+        self.widgits.append(Yes_tenpai)
+        self.widgits.append(No_tenpai)
+
 
         difficulty_value = tk.IntVar(value = 0)
         normal = tk.Radiobutton(
@@ -154,6 +167,9 @@ class QuestionSetting():
             x = 713, y = 399,
             width = 145,
             height = 48)
+        self.widgits.append(normal)
+        self.widgits.append(difficult)
+        self.widgits.append(random)
 
 
         start_button = tk.Button(
@@ -178,6 +194,8 @@ class QuestionSetting():
             x = 5, y = 577,
             width = 146,
             height = 47)
+        self.widgits.append(start_button)
+        self.widgits.append(backb)
         
 
     class normal_setting_information(SettingInformation.setting_information):
@@ -197,51 +215,3 @@ class QuestionSetting():
             q.show_question(canvas, root)
             print("again")
         
-        '''
-        def add_miss_question(self, question, yaku):
-            with open("../miss_question.txt", 'a' ) as ms:
-                ms.write(f"{question}:")
-                ms.write(f"{yaku}:")
-                ms.write("\n")
-        
-        #Override
-        def result(self, root, canvas, setting, correct):
-            if correct:
-                label = tk.Label(
-                    root,
-                    text = "正解",
-                    font=("MSゴシック", "20", "bold")
-                )
-            else:
-                self.add_miss_question(question, yaku)
-                label = tk.Label(
-                    root,
-                    text = "不正解",
-                    font=("MSゴシック", "20", "bold")
-                )
-            label.place(x=450, y=350)
-
-            nextquestion = Image.images["nextquestion"]
-            nextb = tk.Button(
-                image = nextquestion,
-                borderwidth = 0,
-                highlightthickness = 0,
-                command = lambda:nextb_clicked(new_canvas, root, this_setting, correct),
-                relief = "flat")
-            nextb.place(
-                x = 770, y = 550,
-                width = 202,
-                height = 35)
-            
-            backpage = Image.images["backpage"]
-            backb = tk.Button(
-                image = backpage,
-                borderwidth = 0,
-                highlightthickness = 0,
-                command = lambda:backb_clicked(new_canvas, root, this_setting, correct),
-                relief = "flat")
-            backb.place(
-                x = 5, y = 550,
-                width = 202,
-                height = 35)
-        '''

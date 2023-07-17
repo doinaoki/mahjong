@@ -6,9 +6,13 @@ from . import Home
 from . import ListMissQuestion
 from . import ListPuzzledQuestion
 
+widgits = []
+
 def btn2_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
+    for i in widgits:
+        i.destroy()
     print("btn2 clicked")
     q = QuestionSetting.QuestionSetting()
     q.question_setting(canvas, root)
@@ -16,6 +20,8 @@ def btn2_clicked(canvas, root):
 def btn3_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
+    for i in widgits:
+        i.destroy()
     l = ListMissQuestion.ListMissQuestion()
     l.show_list(canvas, root)
     print("btn3 clicked")
@@ -23,6 +29,8 @@ def btn3_clicked(canvas, root):
 def btn4_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
+    for i in widgits:
+        i.destroy()
     l = ListPuzzledQuestion.ListPuzzledQuestion()
     l.show_list(canvas, root)
     print("btn3 clicked")
@@ -30,11 +38,15 @@ def btn4_clicked(canvas, root):
 def backb_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
+    for i in widgits:
+        i.destroy()
     Home.home(root)
     print("back")
 
 
 def select_question(canvas, root):
+    global widgits
+    widgits = []
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",
@@ -60,6 +72,7 @@ def select_question(canvas, root):
         x = 352, y = 326,
         width = 295,
         height = 50)
+    widgits.append(b2)
     
     button3 = Image.images["button3"]
     b3 = tk.Button(
@@ -73,6 +86,7 @@ def select_question(canvas, root):
         x = 349, y = 396,
         width = 295,
         height = 50)
+    widgits.append(b3)
     
     button4 = Image.images["button4"]
     b4 = tk.Button(
@@ -86,6 +100,7 @@ def select_question(canvas, root):
         x = 349, y = 466,
         width = 295,
         height = 50)
+    widgits.append(b4)
     
     backpage = Image.images["backpage"]
     backb = tk.Button(
@@ -99,3 +114,4 @@ def select_question(canvas, root):
         x = 346, y = 536,
         width = 295,
         height = 50)
+    widgits.append(backb)

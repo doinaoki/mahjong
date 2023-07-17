@@ -5,6 +5,8 @@ from . import Question
 from . import QuestionSetting
 from . import DrawFigure
 
+widgits = []
+
 def check_answer(wait_piece_answer, yaku):
     answer_piece = []
     for i in yaku:
@@ -40,6 +42,8 @@ def show_piece(question, canvas):
 def backb_clicked(canvas, root, this_setting, correct, check_value, question, yaku):
     canvas.delete("all")
     canvas.place_forget()
+    for i in widgits:
+        i.destroy()
     add_puzzled_question(check_value, question, yaku)
     this_setting.back_question(root, canvas, this_setting, correct)
     print("back")
@@ -47,6 +51,8 @@ def backb_clicked(canvas, root, this_setting, correct, check_value, question, ya
 def nextb_clicked(canvas, root, this_setting, correct, check_value, question, yaku):
     canvas.delete("all")
     canvas.place_forget()
+    for i in widgits:
+        i.destroy()
     add_puzzled_question(check_value, question, yaku)
     this_setting.again_question(root, canvas, this_setting, correct)
     print("next!")
@@ -87,6 +93,8 @@ def show_result_pieces(root, canvas, yaku):
 
 
 def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
+    global widgits
+    widgits = []
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",
@@ -150,4 +158,8 @@ def result (canvas, root, wait_piece_answer, question, yaku, this_setting):
         x = 5, y = 550,
         width = 295,
         height = 50)
+    
+    widgits.append(puzzledb)
+    widgits.append(nextb)
+    widgits.append(backb)
     

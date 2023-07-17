@@ -3,6 +3,8 @@ from . import Image
 from . import ListPuzzledQuestion
 from . import DrawFigure
 
+widgits = []
+
 def show_piece(question, canvas):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
     t = 1
@@ -19,6 +21,8 @@ def show_piece(question, canvas):
 def back_button_clicked(canvas, root):
     canvas.delete("all")
     canvas.place_forget()
+    for i in widgits:
+        i.destroy()
     l = ListPuzzledQuestion.ListPuzzledQuestion()
     l.show_list(canvas, root)
     print("back")
@@ -58,6 +62,8 @@ def show_result_pieces(root, canvas, yaku):
 '''
             
 def puzzled_result (canvas, root, question, yaku):
+    global widgits
+    widgits = []
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",
@@ -85,3 +91,5 @@ def puzzled_result (canvas, root, question, yaku):
         x = 11, y = 558,
         width = 170,
         height = 43)
+    
+    widgits.append(backb)

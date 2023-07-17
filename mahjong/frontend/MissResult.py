@@ -3,6 +3,8 @@ from . import Image
 from . import ListMissQuestion
 from . import DrawFigure
 
+widgits = []
+
 def show_piece(question, canvas):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
     t = 1
@@ -41,23 +43,10 @@ def show_result_pieces(root, canvas, yaku):
             yaku_name = yaku_list[k]
             yaku_place = [place[0] + yaku_places[k][0], place[1] + yaku_places[k][1]]
             label = DrawFigure.draw_label(root, yaku_name, ("MSゴシック", "20", "bold"), yaku_place[0], yaku_place[1])
-'''
-def show_result_pieces(root, canvas, yaku):
-    s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
-    places = [[210, 264],[568,264],[210, 358],[568,358],[210,452],[568,452],[210,546],[568,546]]
-    for i in range(len(yaku)):
-        agari = yaku[i]
-        win_piece = agari[0]
-        yaku_list = agari[2]
-        place = places[i]
-
-        pin = Image.images[s[win_piece]]
-        canvas.create_image(
-            place[0], place[1],
-            image=pin)
-'''
             
 def miss_result (canvas, root, question, yaku):
+    global widgits
+    widgits = []
     new_canvas = tk.Canvas(
         root,
         bg = "#000000",
@@ -85,3 +74,5 @@ def miss_result (canvas, root, question, yaku):
         x = 11, y = 558,
         width = 170,
         height = 43)
+    
+    widgits.append(backb)

@@ -105,12 +105,14 @@ class CreateMissQuestion:
         self.canvas.place_forget()
         for i in self.now_button:
             i.destroy()
+        for i in self.widgits:
+            i.destroy()
         lmq = ListMissQuestion.ListMissQuestion()
         lmq.show_list(self.canvas, self.root)
         print("back")
 
     def create(self, canvas, root):
-
+        self.widgits = []
         new_canvas = tk.Canvas(
             root,
             bg = "#F5F5F5",
@@ -124,18 +126,19 @@ class CreateMissQuestion:
         self.root = root
         self.input_pieces = [0 for i in range(9)]
         
-        backpage = Image.images["createbutton"]
-        backb = tk.Button(
-            image = backpage,
+
+        create_question = tk.Button(
+            image = Image.images["createbutton"],
             borderwidth = 0,
             highlightthickness = 0,
             command = lambda:self.create_button_clicked(),
             relief = "flat",
             background="#F2F0F0")
-        backb.place(
+        create_question.place(
             x = 800, y = 558,
             width = 170,
             height = 43)
+        self.widgits.append(create_question)
         
         backpage = Image.images["missbackpage"]
         backb = tk.Button(
@@ -149,6 +152,7 @@ class CreateMissQuestion:
             x = 11, y = 558,
             width = 170,
             height = 43)
+        self.widgits.append(backb)
         
         self.create_button_pieces()
         self.delete_button_pieces()
