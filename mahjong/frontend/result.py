@@ -15,7 +15,7 @@ def check_answer(wait_piece_answer, yaku):
     if wait_piece_answer == "":
         wait_piece_answer = []
     else:
-        wait_piece_answer = sorted([int(i) for i in wait_piece_answer.split(",")])
+        wait_piece_answer = sorted([int(i) for i in wait_piece_answer])
     if answer_piece == wait_piece_answer:
         print("正解")
         return True
