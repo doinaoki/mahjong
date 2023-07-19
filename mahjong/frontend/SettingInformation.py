@@ -10,7 +10,7 @@ class setting_information:
         self.difficulty = difficulty
 
     def back_question():
-        print("question back")
+        pass
     
     def again_question():
-        print("question again")
+        pass

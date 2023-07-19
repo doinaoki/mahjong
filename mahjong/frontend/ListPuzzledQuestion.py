@@ -17,7 +17,6 @@ class ListPuzzledQuestion:
     #now_button
 
     def delete_button_clicked(self, event):
-        print(event.widget.cget("text"))
         self.miss_list.pop(event.widget.cget("text"))
         self.now_page_number = 1
         self.canvas.delete("all")
@@ -32,7 +31,6 @@ class ListPuzzledQuestion:
                 ms.write("\n")
         self.canvas.place_forget()
         self.show_list(self.canvas, self.root)
-        print("delete")
 
 
     def page_button_clicked(self, event):
@@ -51,7 +49,6 @@ class ListPuzzledQuestion:
         for i in self.now_button:
             i.destroy()
         SelectQuestion.select_question(self.canvas, self.root)
-        print("back")
 
 
     def answer_button_clicked(self, event):
@@ -139,7 +136,6 @@ class ListPuzzledQuestion:
             b.bind("<ButtonPress>", self.answer_button_clicked)
             self.now_button.append(b)
 
-        print("show")
 
     def show_list(self, canvas, root):
         self.show_page_piece = 4
@@ -154,7 +150,6 @@ class ListPuzzledQuestion:
                     miss.append(ast.literal_eval(k))
             if miss != []:
                 self.miss_list.append(miss)
-        #print(self.miss_list)
 
         new_canvas = tk.Canvas(
             root,

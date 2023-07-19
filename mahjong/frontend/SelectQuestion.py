@@ -13,7 +13,6 @@ def btn2_clicked(canvas, root):
     canvas.place_forget()
     for i in widgits:
         i.destroy()
-    print("btn2 clicked")
     q = QuestionSetting.QuestionSetting()
     q.question_setting(canvas, root)
 
@@ -24,7 +23,6 @@ def btn3_clicked(canvas, root):
         i.destroy()
     l = ListMissQuestion.ListMissQuestion()
     l.show_list(canvas, root)
-    print("btn3 clicked")
 
 def btn4_clicked(canvas, root):
     canvas.delete("all")
@@ -33,7 +31,6 @@ def btn4_clicked(canvas, root):
         i.destroy()
     l = ListPuzzledQuestion.ListPuzzledQuestion()
     l.show_list(canvas, root)
-    print("btn3 clicked")
 
 def backb_clicked(canvas, root):
     canvas.delete("all")
@@ -41,7 +38,6 @@ def backb_clicked(canvas, root):
     for i in widgits:
         i.destroy()
     Home.home(root)
-    print("back")
 
 
 def select_question(canvas, root):

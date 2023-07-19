@@ -19,7 +19,7 @@ class generate:
                     if i[0][0] == k:
                         number_of_agari += 1
                         break
-            print(f"{number_of_agari}面張")
+
             if not self.is_tenpai:
                 break
             elif self.difficulty == 0:

@@ -23,7 +23,6 @@ def back_button_clicked(canvas, root):
     canvas.place_forget()
     l = ListMissQuestion.ListMissQuestion()
     l.show_list(canvas, root)
-    print("back")
 
 def show_result_pieces(root, canvas, yaku):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]

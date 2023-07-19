@@ -8,7 +8,7 @@ from . import SettingInformation
 class QuestionSetting():
 
     def piece_clicked(self, radio_value):
-        print(radio_value.get())
+        pass
 
     def confilm_setting_clicked(self, canvas, root, radio_value, check_value, difficulty):
         canvas.delete("all")
@@ -22,7 +22,7 @@ class QuestionSetting():
         q.show_question(canvas, root)
 
     def tenpai_clicked(self, c):
-        print(f"value = {c.get()} ckeck_button_clicked")
+        pass
 
     def backb_clicked(self, canvas, root):
         canvas.delete("all")
@@ -31,7 +31,6 @@ class QuestionSetting():
             i.destroy()
         self.widgits = []
         SelectQuestion.select_question(canvas, root)
-        print("back")
 
     def question_setting(self, canvas, root):
         self.widgits = []
@@ -206,12 +205,10 @@ class QuestionSetting():
         def back_question(self, root, canvas, setting, correct):
             q = QuestionSetting()
             q.question_setting(canvas, root)
-            print("back")
         
         #Override
         def again_question(self, root, canvas, setting, correct):
             q = Question.question()
             q.generate_question(setting, self.difficulty)
             q.show_question(canvas, root)
-            print("again")
         

@@ -26,14 +26,12 @@ class CreateMissQuestion:
             if self.input_pieces[event.widget.cget("text")] < 4:
                 self.input_pieces[event.widget.cget("text")] += 1
         self.show_piece()
-        #print(self.input_pieces)
 
     def delete_piece_clicked(self, event):
         if sum(self.input_pieces) > 0:
             if self.input_pieces[event.widget.cget("text")] > 0:
                 self.input_pieces[event.widget.cget("text")] -= 1
         self.show_piece()
-        #print(self.input_pieces)
 
 
     def create_button_pieces(self):
@@ -76,7 +74,6 @@ class CreateMissQuestion:
         return
 
     def create_button_clicked(self):
-        #print(input_pieces.get())
         input_length = sum(self.input_pieces)
         if input_length != 7 and input_length != 10 and input_length != 13:
             label = tk.Label(
@@ -109,7 +106,6 @@ class CreateMissQuestion:
             i.destroy()
         lmq = ListMissQuestion.ListMissQuestion()
         lmq.show_list(self.canvas, self.root)
-        print("back")
 
     def create(self, canvas, root):
         self.widgits = []

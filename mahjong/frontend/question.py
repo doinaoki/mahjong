@@ -45,7 +45,6 @@ class question:
         self.setting = setting
 
     def show_question(self, canvas, root):
-        print(self.question, self.yaku)
         self.widgits = []
         new_canvas = tk.Canvas(
             root,

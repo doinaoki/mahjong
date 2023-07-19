@@ -17,14 +17,12 @@ def check_answer(wait_piece_answer, yaku):
     else:
         wait_piece_answer = sorted([int(i) for i in wait_piece_answer])
     if answer_piece == wait_piece_answer:
-        print("正解")
         return True
     else:
-        print("不正解")
         return False
 
 def puzzled_button_clicked(check):
-    print(check)
+    pass
 
 def show_piece(question, canvas):
     s = ["pin1", "pin2", "pin3", "pin4", "pin5", "pin6", "pin7", "pin8", "pin9"]
@@ -46,7 +44,6 @@ def backb_clicked(canvas, root, this_setting, correct, check_value, question, ya
         i.destroy()
     add_puzzled_question(check_value, question, yaku)
     this_setting.back_question(root, canvas, this_setting, correct)
-    print("back")
 
 def nextb_clicked(canvas, root, this_setting, correct, check_value, question, yaku):
     canvas.delete("all")
@@ -55,7 +52,6 @@ def nextb_clicked(canvas, root, this_setting, correct, check_value, question, ya
         i.destroy()
     add_puzzled_question(check_value, question, yaku)
     this_setting.again_question(root, canvas, this_setting, correct)
-    print("next!")
 
 def add_miss_question(question, yaku):
     with open("../miss_question.txt", 'a' ) as ms:

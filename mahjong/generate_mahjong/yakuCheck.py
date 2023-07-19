@@ -43,7 +43,6 @@ def wait_tile(win_tile, sets):
     #カンチャン,シャンポン,単騎,両面
     wait_string = ["両面", "単騎", "カンチャン", "ペンチャン", "シャンポン"]
     wait_array = [False,False,False,False,False]
-    print(win_tile)
     for set in sets:
         if len(set) == 2 and win_tile in set:
             wait_array[1] = True
@@ -118,7 +117,6 @@ def yaku(sets_info):
         for i in set_info[1]:
             if i[0] != i[1]:
                 a[i[0]] += 1
-        print(a)
         for i in a:
             if i >= 2 and iipeekoo:
                 ryanpeekoo = True
