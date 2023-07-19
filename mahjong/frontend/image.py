@@ -44,17 +44,17 @@ def image():
 
     images["startbutton"] = tk.PhotoImage(file = f"design\\start_button.png")
     images["backbutton"] = tk.PhotoImage(file = f"design\\back_button.png")
-    images["createbutton"] = tk.PhotoImage(file = f"design\\作成.png")
+    images["createbutton"] = tk.PhotoImage(file = f"design\\createbutton.png")
 
     #question_page
     images["questionbackground"] = tk.PhotoImage(file = f"design\\question_background.png")
-    images["decision"] = tk.PhotoImage(file = f"design\\決定.png")
-    images["puzzledbutton"] = tk.PhotoImage(file = f"design\\迷った.png")
+    images["decision"] = tk.PhotoImage(file = f"design\\decision.png")
+    images["puzzledbutton"] = tk.PhotoImage(file = f"design\\puzzled.png")
 
     #result_page
     images["resultbackground"] = tk.PhotoImage(file = f"design\\result_background.png")
-    images["uncorrect"] = tk.PhotoImage(file = f"design\\不正解.png")
-    images["correct"] = tk.PhotoImage(file = f"design\\正解.png")
+    images["uncorrect"] = tk.PhotoImage(file = f"design\\uncorrect.png")
+    images["correct"] = tk.PhotoImage(file = f"design\\correct.png")
 
     images["backpage"] = tk.PhotoImage(file = f"design\\backpage.png")
     images["nextquestion"] = tk.PhotoImage(file = f"design\\nextquestion.png")
