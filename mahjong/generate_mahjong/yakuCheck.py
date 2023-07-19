@@ -81,6 +81,7 @@ def yaku(sets_info):
         yaku_array = ["清一色"]
         han = 6
         if set_info[4] == 4:
+            yaku_array.append("対々和")
             if set_info[2] == "単騎":
                 yaku_array.append("四暗刻単騎")
             else:
@@ -88,8 +89,7 @@ def yaku(sets_info):
             han += 100
         if set_info[4] == 3:
             yaku_array.append("三暗刻")
-            yaku_array.append("対々和")
-            han += 4
+            han += 2
         if set_info[4] == 0 and set_info[2] == "両面":
             yaku_array.append("平和")
             han += 1
