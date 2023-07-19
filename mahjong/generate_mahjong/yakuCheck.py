@@ -108,7 +108,6 @@ def yaku(sets_info):
             if 0 in set_info[1][i] or 8 in set_info[1][i]:
                 break
             if i == len(set_info[1])-1:
-                print(set_info[1][i])
                 yaku_array.append("タンヤオ")
                 han += 1
         a = [0 for _ in range(9)]
