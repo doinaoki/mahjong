@@ -14,8 +14,10 @@ def check_answer(wait_piece_answer, yaku):
     answer_piece = sorted(list(set(answer_piece)))
     if wait_piece_answer == "":
         wait_piece_answer = []
-    else:
+    elif wait_piece_answer.isdigit():
         wait_piece_answer = sorted([int(i) for i in wait_piece_answer])
+    else:
+        wait_piece_answer = [10]
     if answer_piece == wait_piece_answer:
         return True
     else:
