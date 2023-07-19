@@ -1,8 +1,8 @@
 # 清一色学習アプリ
 
 ### 起動方法
-- clone か download zipをする
-- ダウンロードしたディレクトリ(mahjongディレクトリ)で `python mahjong/main.py` と打てば起動する
+- download zipをする
+- ダウンロードしたディレクトリ(mahjong-mainディレクトリ)で `python mahjong/main.py` と打てば起動する
 
 
 ### 麻雀問題設定
