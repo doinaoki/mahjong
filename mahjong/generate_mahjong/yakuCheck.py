@@ -18,14 +18,26 @@ def check(question, agari):
         return new_yakus
     #[[上がり牌, 面子, 待ち, 順子数, 暗刻数]]
     sets_info = []
+    tiitoi_check = False
+    tiitoi_agari = 0
     for i in agari:
+        if len(i[1]) == 9:
+            tiitoi_check = True
+            tiitoi_agari = i
+            continue
         win_tile = i[0][0]
         sets = i[1:]
         w = wait_tile(win_tile,sets)
         chow = count_chow(sets)
         pung = 4 - chow
         sets_info.append([win_tile, sets, w, chow, pung])
-    return yaku(sets_info)
+    yy = yaku(sets_info)
+    if tiitoi_check:
+        if tiitoi_agari[1][0] == 0 and tiitoi_agari[1][8] == 0:
+            yy.append([tiitoi_agari[0][0], 8, ["清一色", "七対子", "タンヤオ"]])
+        else:
+            yy.append([tiitoi_agari[0][0], 8, ["清一色", "七対子"]])
+    return arrangement(yy)
     
 def wait_tile(win_tile, sets):
     #カンチャン,シャンポン,単騎,両面
@@ -125,6 +137,5 @@ def yaku(sets_info):
             han += 2
         
         yakus.append([set_info[0], han, yaku_array]) 
-        yakus = arrangement(yakus)
     return yakus
             

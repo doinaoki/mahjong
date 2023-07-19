@@ -6,6 +6,14 @@ def check(piece_array, number_mahjong):
             piece_array[i] += 1
             head(copy.deepcopy(piece_array), number_mahjong+1, [[i]],agari)
             piece_array[i] -= 1
+        piece_array[i] += 1
+        tiitoi_check = 0
+        for k in piece_array:
+            if k == 2:
+                tiitoi_check += 1
+        if tiitoi_check == 7:
+            agari.append([[i]]+[piece_array])
+        piece_array[i] -= 1
     return agari
 
 def head(piece_array, number_mahjong, agari_array,agari):
