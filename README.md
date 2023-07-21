@@ -2,7 +2,10 @@
 
 ### 起動方法
 - download zipをする
-- ダウンロードしたディレクトリ(mahjong-mainディレクトリ)で `python mahjong/main.py` と打てば起動する
+- ターミナルで
+- `brew install tcl-tk`
+- `brew install python-tk@3.11`を打つ
+- ダウンロードしたディレクトリ(mahjong-main)で`python mahjong/main.py`を行う
 
 
 ### 麻雀問題設定
