@@ -1,8 +1,15 @@
 # 清一色学習アプリ
 
+### 注意点
+- Windowsで開発したためMACの動作が不安定＆UIがおかしいです(今回使用したtkinterがMACだとバグるみたいです)
+- 一応起動して主要な動作はできるように修正したはずです
+
 ### 起動方法
 - download zipをする
-- ダウンロードしたディレクトリ(mahjong-mainディレクトリ)で `python mahjong/main.py` と打てば起動する
+- ターミナルで
+- `brew install tcl-tk`
+- `brew install python-tk@3.11`を打つ
+- ダウンロードしたディレクトリ(mahjong-main)で`python mahjong/main.py`を行う
 
 
 ### 麻雀問題設定
