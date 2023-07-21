@@ -48,6 +48,6 @@ def home(root):
         x = 352, y = 326,
         width = 295,
         height = 50)
-    b0["bg"] = "#666571"
+    b0["bg"] = "black"
     b0["border"] = "0"
 

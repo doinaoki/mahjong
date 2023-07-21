@@ -6,8 +6,8 @@ def draw_label(root, text_value, font_value, x_value, y_value):
         root,
         text = text_value,
         font = font_value,
-        bg = "#F5F5F5"
     )
+    label.config(bg="black")
     label.place(x=x_value, y=y_value)
 
     return label
