@@ -1,5 +1,10 @@
 # 清一色学習アプリ
 
+### MAC
+- windowsで開発したのでMacだと動作が変です(主要な動作は動く(はず))
+- Macの人はMac-versionのブランチの方を参照してください
+
+
 ### 起動方法
 - download zipをする
 - ダウンロードしたディレクトリ(mahjong-mainディレクトリ)で `python mahjong/main.py` と打てば起動する
